@@ -4,26 +4,29 @@
   <meta charset="utf-8">
   
   
-  <title>Hexo</title>
+  <title>使用hexo搭建个人主页 | nextuser&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="目标:搭建个人网站, 不购买服务器, 搭建个人 blog. 步骤: 购买域名 , 本例从porkbun.com 购买了域名walrus.mov 不买服务器,直接使用github page功能   安装hexo ,hexo是一个博客管理工具,  将hexo 管理的网页发布到一个github project中  将 github project 配置成github page  获得 nextuser.">
+  <meta name="description" content="目标:搭建个人网站, 不购买服务器, 搭建个人 blog. 步骤: 购买域名 , 本例从porkbun.com 购买了域名walrus.mov 不买服务器,直接使用github page功能   安装hexo ,hexo是一个博客管理工具,  将hexo 管理的网页发布到一个github project中  将 github project 配置成github page 获得 nextuser.g">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/2024/11/18/hexo-install-tips/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="目标:搭建个人网站, 不购买服务器, 搭建个人 blog. 步骤: 购买域名 , 本例从porkbun.com 购买了域名walrus.mov 不买服务器,直接使用github page功能   安装hexo ,hexo是一个博客管理工具,  将hexo 管理的网页发布到一个github project中  将 github project 配置成github page  获得 nextuser.">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/images/image-20241118232126863.png">
-<meta property="og:image" content="http://example.com/images/image-20241118232306366.png">
-<meta property="og:image" content="http://example.com/images/image-20241118232507380.png">
-<meta property="og:image" content="http://example.com/images/image-20241118232644409.png">
-<meta property="article:published_time" content="2024-11-18T14:57:25.569Z">
-<meta property="article:modified_time" content="2024-11-18T15:40:27.279Z">
-<meta property="article:author" content="John Doe">
+<meta property="og:title" content="使用hexo搭建个人主页">
+<meta property="og:url" content="http://www.walrus.mov/2024/11/19/hexo-install-tips/index.html">
+<meta property="og:site_name" content="nextuser&#39;s blog">
+<meta property="og:description" content="目标:搭建个人网站, 不购买服务器, 搭建个人 blog. 步骤: 购买域名 , 本例从porkbun.com 购买了域名walrus.mov 不买服务器,直接使用github page功能   安装hexo ,hexo是一个博客管理工具,  将hexo 管理的网页发布到一个github project中  将 github project 配置成github page 获得 nextuser.g">
+<meta property="og:locale">
+<meta property="og:image" content="http://www.walrus.mov/images/image-20241118232126863.png">
+<meta property="og:image" content="http://www.walrus.mov/images/image-20241118232306366.png">
+<meta property="og:image" content="http://www.walrus.mov/images/image-20241118232507380.png">
+<meta property="og:image" content="http://www.walrus.mov/images/image-20241118232644409.png">
+<meta property="article:published_time" content="2024-11-18T16:08:11.000Z">
+<meta property="article:modified_time" content="2024-11-18T16:16:12.799Z">
+<meta property="article:author" content="nextuser">
+<meta property="article:tag" content="dns">
+<meta property="article:tag" content="blog">
+<meta property="article:tag" content="github page">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/images/image-20241118232126863.png">
+<meta name="twitter:image" content="http://www.walrus.mov/images/image-20241118232126863.png">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="nextuser's blog" type="application/atom+xml">
   
   
     <link rel="shortcut icon" href="/favicon.png">
@@ -48,8 +51,12 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
+        <a href="/" id="logo">nextuser&#39;s blog</a>
       </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">科学减肥</a>
+        </h2>
       
     </div>
     <div id="header-inner" class="inner">
@@ -66,10 +73,10 @@
         
           <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
         
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.walrus.mov"></form>
       </div>
     </div>
   </div>
@@ -78,13 +85,27 @@
       <div class="outer">
         <section id="main"><article id="post-hexo-install-tips" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2024/11/18/hexo-install-tips/" class="article-date">
-  <time class="dt-published" datetime="2024-11-18T14:57:25.569Z" itemprop="datePublished">2024-11-18</time>
+    <a href="/2024/11/19/hexo-install-tips/" class="article-date">
+  <time class="dt-published" datetime="2024-11-18T16:08:11.000Z" itemprop="datePublished">2024-11-19</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/hexo/">hexo</a>►<a class="article-category-link" href="/categories/hexo/dns/">dns</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      使用hexo搭建个人主页
+    </h1>
+  
+
+      </header>
     
     <div class="e-content article-entry" itemprop="articleBody">
       
@@ -98,7 +119,7 @@
 </li>
 <li><p>将hexo 管理的网页发布到一个github project中</p>
 </li>
-<li><p>将 github project 配置成github page<br>  获得 nextuser.github.io 网站, 配置github page 的域名为<a target="_blank" rel="noopener" href="http://www.walrus.mov/">www.walrus.mov</a></p>
+<li><p>将 github project 配置成github page<br> 获得 nextuser.github.io 网站, 配置github page 的域名为<a href="http://www.walrus.mov/">www.walrus.mov</a></p>
 </li>
 </ol>
 <p>  刚开始是不会校验通过的.</p>
@@ -165,16 +186,27 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx hexo d</span><br></pre></td></tr></table></figure>
 
 <ol start="5">
-<li>访问我定制的网站  <a target="_blank" rel="noopener" href="http://www.walrus.mov/">www.walrus.mov</a></li>
+<li>访问我定制的网站  <a href="http://www.walrus.mov/">www.walrus.mov</a></li>
 </ol>
+<ul>
+<li>问题 ： markdown 文件引用的 _post&#x2F;images 文件不会拷贝到public，会导致图片不能正常显示。<ul>
+<li>据说_config.yml 配置如下<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<p>下载如下插件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install https://github.com/CodeFalling/hexo-asset-image --save</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/11/18/hexo-install-tips/" data-id="cm3n5gh0h00007bo3bkref0du" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://www.walrus.mov/2024/11/19/hexo-install-tips/" data-id="cm3n5gh0h00007bo3bkref0du" data-title="使用hexo搭建个人主页" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/" rel="tag">blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dns/" rel="tag">dns</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github-page/" rel="tag">github page</a></li></ul>
+
     </footer>
   </div>
   
@@ -183,7 +215,7 @@
   
   
     <a href="/2024/11/18/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">Älter</strong>
       <div class="article-nav-title">Hello World</div>
     </a>
   
@@ -198,16 +230,37 @@
           <aside id="sidebar">
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/dns/">dns</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/sui/">sui</a></li></ul>
+    </div>
+  </div>
 
-  
-    
 
-  
-    
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ability/" rel="tag">ability</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dns/" rel="tag">dns</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-page/" rel="tag">github page</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/move/" rel="tag">move</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sui/" rel="tag">sui</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ability/" style="font-size: 15px;">ability</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/dns/" style="font-size: 10px;">dns</a> <a href="/tags/github-page/" style="font-size: 10px;">github page</a> <a href="/tags/move/" style="font-size: 20px;">move</a> <a href="/tags/sui/" style="font-size: 20px;">sui</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li></ul>
     </div>
@@ -217,16 +270,28 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
         
           <li>
-            <a href="/2024/11/18/hexo-install-tips/">(no title)</a>
+            <a href="/2024/11/19/hexo-install-tips/">使用hexo搭建个人主页</a>
           </li>
         
           <li>
             <a href="/2024/11/18/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/11/sui/sui-colearn-qa1/">2024 -11-11  第一周Sui Move训练营课程答疑问题</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/10/sui/sui-coin-concepts/">sui coin 的一些概念 设计思想和练习</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/10/sui/sui-move-ability/">Move 对象的有4种能力(abliity) 设计考虑</a>
           </li>
         
       </ul>
@@ -242,7 +307,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       
-      &copy; 2024 John Doe<br>
+      &copy; 2024 nextuser<br>
       Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

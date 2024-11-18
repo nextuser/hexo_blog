@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>2024 -11-11  第一周Sui Move训练营课程答疑问题 | nextuser&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="2024 -11-11  第一周Sui Move训练营课程答疑问题 1 github 下载问题,编译时不能访问github路径  对策:  修改Move.toml 中的github成gitee 123[dependencies]#Sui &#x3D; &#123; git &#x3D; &quot;https:&#x2F;&#x2F;github.com&#x2F;MystenLabs&#x2F;sui.git&quot;, subdir &#x3D; &quot;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2024 -11-11  第一周Sui Move训练营课程答疑问题">
+<meta property="og:url" content="http://www.walrus.mov/2024/11/11/sui/sui-colearn-qa1/index.html">
+<meta property="og:site_name" content="nextuser&#39;s blog">
+<meta property="og:description" content="2024 -11-11  第一周Sui Move训练营课程答疑问题 1 github 下载问题,编译时不能访问github路径  对策:  修改Move.toml 中的github成gitee 123[dependencies]#Sui &#x3D; &#123; git &#x3D; &quot;https:&#x2F;&#x2F;github.com&#x2F;MystenLabs&#x2F;sui.git&quot;, subdir &#x3D; &quot;">
+<meta property="og:locale">
+<meta property="og:image" content="http://www.walrus.mov/images/77cab47def96df0bfa0bc2000f6533c.png">
+<meta property="og:image" content="http://www.walrus.mov/images/image-20241111124128818.png">
+<meta property="og:image" content="http://www.walrus.mov/images/eee52dccc6c1235a42e6b2025f3accc.png">
+<meta property="og:image" content="http://www.walrus.mov/images/b751b6d5fe797767bdc15617707d711.jpg">
+<meta property="og:image" content="http://www.walrus.mov/images/4c9df0a037a48da78f174af4c63b80a.jpg">
+<meta property="og:image" content="http://www.walrus.mov/images/image-20241109195541791.png">
+<meta property="og:image" content="http://www.walrus.mov/images/image-20241109194128504.png">
+<meta property="og:image" content="http://www.walrus.mov/images/8983d211b2b1dceaf57ffe22183c955.png">
+<meta property="og:image" content="http://www.walrus.mov/images/image-20241110213627080.png">
+<meta property="og:image" content="http://www.walrus.mov/images/image-20241110213815476.png">
+<meta property="og:image" content="http://www.walrus.mov/images/image-20241110214212301.png">
+<meta property="og:image" content="http://www.walrus.mov/images/image-20241110214031742.png">
+<meta property="og:image" content="http://www.walrus.mov/images/image-20241111221059544.png">
+<meta property="og:image" content="http://www.walrus.mov/images/image-20241111221218590.png">
+<meta property="og:image" content="http://www.walrus.mov/images/image-20241111110333165.png">
+<meta property="og:image" content="http://www.walrus.mov/images/image-20241111114413049.png">
+<meta property="og:image" content="http://www.walrus.mov/images/image-20241110234724177.png">
+<meta property="og:image" content="http://www.walrus.mov/images/image-20241111141423819.png">
+<meta property="og:image" content="http://www.walrus.mov/images/image-20241110231811470.png">
+<meta property="og:image" content="http://www.walrus.mov/images/image-20241114085958845.png">
+<meta property="og:image" content="http://www.walrus.mov/images/image-20241114091033160.png">
+<meta property="og:image" content="http://www.walrus.mov/images/image-20241114095326972.png">
+<meta property="og:image" content="http://www.walrus.mov/images/image-20241111194804064.png">
+<meta property="og:image" content="http://www.walrus.mov/images/image-20241111194357890.png">
+<meta property="og:image" content="http://www.walrus.mov/images/image-20241114080921239.png">
+<meta property="og:image" content="http://www.walrus.mov/images/image-20241111213310276.png">
+<meta property="og:image" content="http://www.walrus.mov/images/image-20241111213712296.png">
+<meta property="og:image" content="http://www.walrus.mov/images/image-20241111213346673.png">
+<meta property="article:published_time" content="2024-11-11T13:47:08.000Z">
+<meta property="article:modified_time" content="2024-11-18T17:09:13.438Z">
+<meta property="article:author" content="nextuser">
+<meta property="article:tag" content="sui">
+<meta property="article:tag" content="move">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.walrus.mov/images/77cab47def96df0bfa0bc2000f6533c.png">
+  
+    <link rel="alternate" href="/atom.xml" title="nextuser's blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">nextuser&#39;s blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">科学减肥</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.walrus.mov"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-sui/sui-colearn-qa1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/11/11/sui/sui-colearn-qa1/" class="article-date">
+  <time class="dt-published" datetime="2024-11-11T13:47:08.000Z" itemprop="datePublished">2024-11-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/sui/">sui</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      2024 -11-11  第一周Sui Move训练营课程答疑问题
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>2024 -11-11  第一周Sui Move训练营课程答疑问题</p>
+<h3 id="1-github-下载问题-编译时不能访问github路径"><a href="#1-github-下载问题-编译时不能访问github路径" class="headerlink" title="1 github 下载问题,编译时不能访问github路径"></a>1 github 下载问题,编译时不能访问github路径</h3><p><img src="/images/77cab47def96df0bfa0bc2000f6533c.png" alt="77cab47def96df0bfa0bc2000f6533c"></p>
+<ul>
+<li>对策:</li>
+</ul>
+<p>修改Move.toml 中的github成gitee</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[dependencies]</span><br><span class="line">#Sui = &#123; git = &quot;https://github.com/MystenLabs/sui.git&quot;, subdir = &quot;crates/sui-framework/packages/sui-framework&quot;, rev = &quot;framework/testnet&quot; &#125;</span><br><span class="line">Sui = &#123; git = &quot;https://gitee.com/MystenLabs/sui.git&quot;, subdir = &quot;crates/sui-framework/packages/sui-framework&quot;, rev = &quot;framework/testnet&quot; &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-git-pull-pull不下来，报错过早文件结束"><a href="#2-git-pull-pull不下来，报错过早文件结束" class="headerlink" title="2  git pull pull不下来，报错过早文件结束"></a>2  git pull pull不下来，报错过早文件结束</h3><h4 id="2-1-如果是-github下载问题-更换是gitee"><a href="#2-1-如果是-github下载问题-更换是gitee" class="headerlink" title="2.1 如果是 github下载问题,更换是gitee"></a>2.1 如果是 github下载问题,更换是gitee</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[dependencies]</span><br><span class="line">#Sui = &#123; git = &quot;https://github.com/MystenLabs/sui.git&quot;, subdir = &quot;crates/sui-framework/packages/sui-framework&quot;, rev = &quot;framework/testnet&quot; &#125;</span><br><span class="line">Sui = &#123; git = &quot;https://gitee.com/MystenLabs/sui.git&quot;, subdir = &quot;crates/sui-framework/packages/sui-framework&quot;, rev = &quot;framework/testnet&quot; &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-2-gitee下载存在问题"><a href="#2-2-gitee下载存在问题" class="headerlink" title="2.2  gitee下载存在问题"></a>2.2  gitee下载存在问题</h4><ul>
+<li><p>对策:  </p>
+<ul>
+<li><p>windows: 使用git bash  执行以下命令,将代码下载到本地</p>
+</li>
+<li><p>采用 ssh 下载</p>
+<p>如</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git@gitee.com:mystenLabs/sui.git</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>方法一 :代码可以使用百度网盘下载</p>
+<p>提取码task</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://pan.baidu.com/s/1LQwwlPz6Q2DVAod-DhD1UA</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20241111124128818.png" alt="image-20241111124128818"></p>
+<p>解压到本地路径</p>
+<ul>
+<li>linux如下命令</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> ~/sui-local</span><br><span class="line"><span class="built_in">cd</span> ~/sui-local</span><br><span class="line">git <span class="built_in">clone</span> git@gitee.com:mystenLabs/sui.git</span><br><span class="line">git checkout framework/testnet</span><br><span class="line">git pull</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2-3-修改-Move-toml-sui框架依赖本地代码"><a href="#2-3-修改-Move-toml-sui框架依赖本地代码" class="headerlink" title="2.3 修改 Move.toml ,sui框架依赖本地代码"></a>2.3 修改 Move.toml ,sui框架依赖本地代码</h4><ul>
+<li><p>确定 用户的主目录</p>
+<figure class="highlight bash"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ljl@ljl-i5-14400:~/work/sui/demo/table_example$ <span class="built_in">cd</span> ~</span><br><span class="line">ljl@ljl-i5-14400:~$ <span class="built_in">pwd</span></span><br><span class="line">/home/ljl</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>例子中的&#x2F;home&#x2F;ljl 是我的主目录,你可以更换成你下载的sui 代码路径</p>
+</li>
+</ul>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[dependencies]</span></span><br><span class="line"><span class="comment">#Sui = &#123; git = &quot;https://gitee.com/MystenLabs/sui.git&quot;, subdir = &quot;crates/sui-framework/packages/sui-framework&quot;, rev = &quot;framework/testnet&quot; &#125;</span></span><br><span class="line"><span class="attr">Sui</span> = &#123;local=<span class="string">&quot;/home/ljl/sui-local/sui/crates/sui-framework/packages/sui-framework&quot;</span> &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h3 id="问题3-每次编译都提示-fail-to-resolve-dependencies-问题"><a href="#问题3-每次编译都提示-fail-to-resolve-dependencies-问题" class="headerlink" title="问题3. 每次编译都提示, fail to resolve dependencies 问题"></a>问题3. 每次编译都提示, fail to resolve dependencies 问题</h3><p><img src="/images/eee52dccc6c1235a42e6b2025f3accc.png" alt="eee52dccc6c1235a42e6b2025f3accc"></p>
+<h4 id="3-1-原因"><a href="#3-1-原因" class="headerlink" title="3.1 原因"></a>3.1 原因</h4><p>github网络访问比较困难</p>
+<h4 id="3-2-对策"><a href="#3-2-对策" class="headerlink" title="3.2 对策"></a>3.2 对策</h4><ul>
+<li>方法1 修改工程</li>
+</ul>
+<figure class="highlight bash"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Move.toml</span></span><br><span class="line">[dependencies]</span><br><span class="line">Sui = &#123; git = <span class="string">&quot;https://gitee.com/MystenLabs/sui.git&quot;</span>, subdir = <span class="string">&quot;crates/sui-framework/packages/sui-framework&quot;</span>, rev = <span class="string">&quot;framework/testnet&quot;</span> &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>方法2  </p>
+<figure class="highlight bash"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sui move --skip-fetch-latest-git-deps  build</span><br></pre></td></tr></table></figure>
+
+
+
+<p>可以写一个suib的脚本, 后续执行 suib即可</p>
+<figure class="highlight bash"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ljl@ljl-i5-14400:~/work/sui/demo/bb$ <span class="built_in">cat</span> /usr/bin/suib</span><br><span class="line">sui move build --skip-fetch-latest-git-deps</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="4-publish-失败的原因-不能找到-clien-server-api-version-mismatch"><a href="#4-publish-失败的原因-不能找到-clien-server-api-version-mismatch" class="headerlink" title="4 publish 失败的原因, 不能找到 clien&#x2F;server api version mismatch"></a>4 publish 失败的原因, 不能找到 clien&#x2F;server api version mismatch</h3><p><img src="/images/b751b6d5fe797767bdc15617707d711.jpg" alt="b751b6d5fe797767bdc15617707d711"></p>
+<p>这个是因为sui client的版本比较老,testnet已经是1.37.1</p>
+<ul>
+<li>方法一</li>
+</ul>
+<p>应该是安装的sui 二进制文件版本比较老,需要从服务器下载更新的sui 二进制文件  </p>
+<p> <a target="_blank" rel="noopener" href="https://github.com/MystenLabs/sui/releases/tag/testnet-v1.37.1">https://github.com/MystenLabs/sui/releases/tag/testnet-v1.37.1</a></p>
+<p>也有可能是 gitee上的代码比较老, 需要更换Move.toml中dependencies 的以来路径</p>
+<ul>
+<li>方法二</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sui client publish --skip-dependency-verification</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="5-publish问题-没有找到Move-toml-unable-to-find-package-manifest"><a href="#5-publish问题-没有找到Move-toml-unable-to-find-package-manifest" class="headerlink" title="5. publish问题:没有找到Move.toml (unable to find package manifest)"></a>5. publish问题:没有找到Move.toml (unable to find package manifest)</h3><p><img src="/images/4c9df0a037a48da78f174af4c63b80a.jpg" alt="4c9df0a037a48da78f174af4c63b80a"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">D:\work\sui&gt;sui client publish</span><br><span class="line">Unable to find package manifest at <span class="string">&#x27;\\?\D:\work\sui/Move.toml&#x27;</span> or <span class="keyword">in</span> its parents</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20241109195541791.png" alt="image-20241109195541791"></p>
+<h4 id="5-1-原因"><a href="#5-1-原因" class="headerlink" title="5.1 原因"></a>5.1 原因</h4><p>这是因为当前路径没有找到Move.toml 文件, 因为没有cd 到项目代码中.</p>
+<p>如下图,  sui move new 新建项目目录之后,需要cd 到项目目录里面</p>
+<p><img src="/images/image-20241109194128504.png" alt="image-20241109194128504"></p>
+<p>参见上图中步骤,第三部需要cd 创建的项目的目录, sui move build 会在当前目录查找Move.toml</p>
+<h3 id="6-pubish-失败-没有gas"><a href="#6-pubish-失败-没有gas" class="headerlink" title="6. pubish 失败,没有gas"></a>6. pubish 失败,没有gas</h3><h4 id="6-1-publish失败-gas不足"><a href="#6-1-publish失败-gas不足" class="headerlink" title="6.1 publish失败,gas不足"></a>6.1 publish失败,gas不足</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">D:\work\sui\task1&gt;sui client balance</span><br><span class="line">No coins found for this address.</span><br><span class="line"></span><br><span class="line">D:\work\sui\task1&gt;sui client faucet</span><br><span class="line">Request successful. It can take up to 1 minute to get the coin. Run sui client gas to check your gas coins.</span><br><span class="line"></span><br><span class="line">D:\work\sui\task1&gt;sui client balance</span><br><span class="line">╭────────────────────────────────────────╮</span><br><span class="line">│ Balance of coins owned by this address │</span><br><span class="line">├────────────────────────────────────────┤</span><br><span class="line">│ ╭─────────────────────────────────╮    │</span><br><span class="line">│ │ coin  balance (raw)  balance    │    │</span><br><span class="line">│ ├─────────────────────────────────┤    │</span><br><span class="line">│ │ Sui   1000000000     1.00 SUI   │    │</span><br><span class="line">│ ╰─────────────────────────────────╯    │</span><br><span class="line">╰────────────────────────────────────────╯</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="7-提示-需要-–gas-budget"><a href="#7-提示-需要-–gas-budget" class="headerlink" title="7. 提示 需要 –gas-budget"></a>7. 提示 需要 –gas-budget</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Could not automatically determine the gas budget. Please supply one using the --gas-budget flag.</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/images/8983d211b2b1dceaf57ffe22183c955.png" alt="8983d211b2b1dceaf57ffe22183c955"></p>
+<h4 id="对策-提供-gas-budget-参数"><a href="#对策-提供-gas-budget-参数" class="headerlink" title="对策:提供 gas-budget 参数"></a>对策:提供 gas-budget 参数</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sui client publish --gas-budget 40000000</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="8-提问预编译的下载包如何使用"><a href="#8-提问预编译的下载包如何使用" class="headerlink" title="8 .提问预编译的下载包如何使用"></a>8 .提问预编译的下载包如何使用</h3><h3 id="8-1-下载sui-编译包"><a href="#8-1-下载sui-编译包" class="headerlink" title="8.1  下载sui  编译包"></a>8.1  下载sui  编译包</h3><p>目前的sui 预编译下载包,在</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/MystenLabs/sui/releases">https://github.com/MystenLabs/sui/releases</a></p>
+<p>根据不同操作系统,下载对应的包, 下载之后,需要解压文件</p>
+<h3 id="8-2-环境变量设置"><a href="#8-2-环境变量设置" class="headerlink" title="8.2 环境变量设置"></a>8.2 环境变量设置</h3><h5 id="8-2-1-windows-的解压和path变量设置"><a href="#8-2-1-windows-的解压和path变量设置" class="headerlink" title="8.2.1 windows 的解压和path变量设置"></a>8.2.1 windows 的解压和path变量设置</h5><p>windows 使用 7-zip能解压到比如 d:\app\sui 文件目录</p>
+<p><img src="/images/image-20241110213627080.png" alt="image-20241110213627080"></p>
+<p><img src="/images/image-20241110213815476.png" alt="image-20241110213815476"></p>
+<p>需要在windows设置path </p>
+<p><img src="/images/image-20241110214212301.png" alt="image-20241110214212301"></p>
+<p><img src="/images/image-20241110214031742.png" alt="image-20241110214031742"></p>
+<h5 id="8-2-2-linux的解压和path-变量设置"><a href="#8-2-2-linux的解压和path-变量设置" class="headerlink" title="8.2.2 linux的解压和path 变量设置"></a>8.2.2 linux的解压和path 变量设置</h5><h6 id="8-2-2-1-linux-下载文件后解压"><a href="#8-2-2-1-linux-下载文件后解压" class="headerlink" title="8.2.2.1 linux 下载文件后解压"></a>8.2.2.1 linux 下载文件后解压</h6><p>下载文件到 ~&#x2F; 目录 ,下面的代码将 tgz 文件解压到sui 目录, 如果你需要</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ljl@ljl-i5-14400:~$ <span class="built_in">ls</span> *.tgz</span><br><span class="line">sui-testnet-v1.36.2-ubuntu-x86_64.tgz  sui-testnet-v1.37.1-ubuntu-x86_64.tgz</span><br><span class="line">ljl@ljl-i5-14400:~$ <span class="built_in">mkdir</span> sui</span><br><span class="line">ljl@ljl-i5-14400:~$ <span class="built_in">cd</span> sui</span><br><span class="line">ljl@ljl-i5-14400:~/sui$ tar xzf ../sui-testnet-v1.37.1-ubuntu-x86_64.tgz</span><br><span class="line">ljl@ljl-i5-14400:~/sui$ <span class="built_in">ls</span></span><br><span class="line">move-analyzer  sui-bridge      sui-data-ingestion  sui-faucet       sui-node            sui-tool</span><br><span class="line">sui            sui-bridge-cli  sui-debug           sui-graphql-rpc  sui-test-validator</span><br><span class="line">ljl@ljl-i5-14400:~/sui$ <span class="built_in">pwd</span></span><br><span class="line">/home/ljl/sui</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>注意$ 之前的是命令行提示</p>
+</li>
+<li><p>最后的pwd看到的目录和你本人用户主目录有关.</p>
+<h6 id="8-2-2-2-设置-path"><a href="#8-2-2-2-设置-path" class="headerlink" title="8.2.2.2 设置 path"></a>8.2.2.2 设置 path</h6></li>
+</ul>
+<ul>
+<li><p>可以修改&#x2F;etc&#x2F;profile 或 ~&#x2F;.bashrc 文件的尾部,增加一行</p>
+</li>
+<li><p>注意你将&#x2F;home&#x2F;ljl&#x2F;sui 修改成你的sui 解压的路径</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH=$PATH:/home/ljl/sui</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>执行 source  ~&#x2F;.bashrc</li>
+</ul>
+<h5 id="8-2-3-mac环境变量设置"><a href="#8-2-3-mac环境变量设置" class="headerlink" title="8.2.3  mac环境变量设置"></a>8.2.3  mac环境变量设置</h5><h6 id="mac-的安装类似linux-最后路径设置需要配置在-etc-profile"><a href="#mac-的安装类似linux-最后路径设置需要配置在-etc-profile" class="headerlink" title="mac 的安装类似linux, 最后路径设置需要配置在 &#x2F;etc&#x2F;profile"></a>mac 的安装类似linux, 最后路径设置需要配置在 &#x2F;etc&#x2F;profile</h6><h1 id><a href="#" class="headerlink" title></a></h1><h3 id="9-otw-有什么用"><a href="#9-otw-有什么用" class="headerlink" title="9 otw 有什么用"></a>9 otw 有什么用</h3><ul>
+<li>问题: 见证者对象有什么作用，我在好几个地方看到，只知道怎么用，不知道为什么要这么写</li>
+</ul>
+<p>otw 在coin发币的时候用得很多,  因为otw对象智能由package构造,   </p>
+<p>而参与增加货币相关的方法,都是由一个<T> 参数,这个类型参数是一个OTW参数.   使用OTW 类型做泛型的对象,</T></p>
+<p>只在OTW 模块初始化的时候才能创建,以后都无法创建. One time witness </p>
+<p>注意</p>
+<figure class="highlight ts"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">struct <span class="title class_">Balance</span>&lt;T&gt;&#123;&#125;</span><br><span class="line">struct <span class="title class_">Supply</span>&lt;T&gt;&#123;&#125;</span><br><span class="line">struct <span class="title class_">Coin</span>&lt;T&gt;&#123;&#125;</span><br><span class="line">struct <span class="title class_">TreasureCap</span>&lt;T&gt;&#123;&#125;</span><br><span class="line"><span class="comment">/// unique instance of CoinMetadata&lt;T&gt; that stores the metadata for this coin type.</span></span><br><span class="line"><span class="keyword">public</span> struct <span class="title class_">CoinMetadata</span>&lt;phantom T&gt; has key, store &#123;</span><br><span class="line">   ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   </span><br><span class="line"><span class="variable language_">module</span> <span class="attr">pkg</span>::hk&#123;</span><br><span class="line">    <span class="keyword">public</span> struct <span class="variable constant_">HK</span> has drop &#123;&#125;,</span><br><span class="line">    </span><br><span class="line">    <span class="title function_">init</span>(<span class="params"><span class="attr">hk</span>:&amp;mut HK, <span class="attr">ctx</span>:mut <span class="title class_">TxContext</span></span>)&#123;</span><br><span class="line">        <span class="title function_">let</span> (cap,meta) = <span class="attr">coin</span>::<span class="title function_">create_currency</span>(hk,&amp;mut ctx);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>创建的货币沾染了一个T, 这个T  是一个OTW  struct, 无法创建,无法在外部使用</p>
+<p><img src="/images/image-20241111221059544.png" alt="image-20241111221059544"></p>
+<p><img src="/images/image-20241111221218590.png" alt="image-20241111221218590"></p>
+<ul>
+<li><p>supply对象提供了增长货币余额balance的方法,  </p>
+</li>
+<li><p>balance可以转换成coin. </p>
+</li>
+<li><p>sui::balance::create_supply 是最关键的创建货币的方法</p>
+</li>
+<li><p>sui::balance::create_supply 需要一个otw对象做参数.</p>
+</li>
+</ul>
+<p> create_supply 需要一个otw对象.  创建货币 需要Balance,创建Balance 需要Supply, 创建Supply 需要一个otw对象hk</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> sui::balance;</span><br><span class="line"><span class="keyword">public</span> fun balance::<span class="built_in">create_supply</span>&lt;T: drop&gt;(_: T): Supply&lt;T&gt; &#123;</span><br><span class="line">    Supply &#123; value: <span class="number">0</span> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> fun <span class="built_in">increase_supply</span>&lt;T&gt;(self: &amp;mut Supply&lt;T&gt;, value: u64): Balance&lt;T&gt; &#123;</span><br><span class="line">    assert!(value &lt; (<span class="number">18446744073709551615u</span>64 - self.value), EOverflow);</span><br><span class="line">    self.value = self.value + value;</span><br><span class="line">    Balance &#123; value &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>sui::balance 这个Supply 和Balance 都需要一个OTW类</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public struct Supply&lt;phantom T&gt; has store &#123;</span><br><span class="line">    value: u64,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/// Storable balance - an inner struct of a Coin type.</span><br><span class="line">/// Can be used to store coins which don&#x27;t need the key ability.</span><br><span class="line">public struct Balance&lt;phantom T&gt; has store &#123;</span><br><span class="line">    value: u64,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>sui::coin 也有一个type arg 需要一个OTW 类</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/// A coin of type `T` worth `value`. Transferable and storable</span><br><span class="line">public struct Coin&lt;phantom T&gt; has key, store &#123;</span><br><span class="line">    id: UID,</span><br><span class="line">    balance: Balance&lt;T&gt;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 我们创建货币之后,查看到的TreasuryCap,持有一个Supply对象,因此持有了增长货币的能力.</p>
+<p><img src="/images/image-20241111110333165.png" alt="image-20241111110333165"></p>
+<p>货币创建,如下图中的HK 不能手工创建,后面创建的货币,都使用HK 类型参数</p>
+<figure class="highlight ts"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span> <span class="attr">coin_owner</span>::hk &#123;</span><br><span class="line">    use <span class="attr">sui</span>::<span class="attr">coin</span>::create_currency;</span><br><span class="line">    use <span class="attr">sui</span>::<span class="attr">tx_context</span>::&#123;<span class="title class_">TxContext</span>, sender&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> struct <span class="variable constant_">HK</span> has drop &#123;&#125;</span><br><span class="line"></span><br><span class="line">    fun <span class="title function_">init</span>(<span class="params"><span class="attr">hk</span>: HK, <span class="attr">ctx</span>: &amp;mut <span class="title class_">TxContext</span></span>) &#123;</span><br><span class="line">        <span class="title function_">let</span> (treasury_cap, coin_metadata) =</span><br><span class="line">            <span class="title function_">create_currency</span>(</span><br><span class="line">            hk,</span><br><span class="line">            <span class="number">8</span>,</span><br><span class="line">            b<span class="string">&quot;HK&quot;</span>,</span><br><span class="line">            b<span class="string">&quot;HK  made in hongkong&quot;</span>,</span><br><span class="line">            b<span class="string">&quot;HK  made in hongkong&quot;</span>,</span><br><span class="line">            <span class="attr">option</span>::<span class="title function_">none</span>(),</span><br><span class="line">            ctx);</span><br><span class="line">        <span class="attr">transfer</span>::<span class="title function_">public_freeze_object</span>(coin_metadata);</span><br><span class="line">        <span class="keyword">let</span> my_address = <span class="title function_">sender</span>(ctx);</span><br><span class="line">        <span class="attr">transfer</span>::<span class="title function_">public_transfer</span>(treasury_cap, my_address)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>货币创建方法 coin::create_currency, 里面需要第一个参数 witness是 One time witness</p>
+<p><img src="/images/image-20241111114413049.png" alt="image-20241111114413049"></p>
+<p>以下推论:</p>
+<ol>
+<li><p>定义货币的package publish之后,获得对象id ,成为pkg_id</p>
+</li>
+<li><p>publish的时候,临时创建了一个 pkg_id::hk::HK struct的对象</p>
+</li>
+<li><p>coin::create_currency  创建出来了 </p>
+<p><code>Supply&lt;pkg_id::hk::HK&gt; </code> 对象<br>这个对象能生成 <code>Balance&lt;pkg_id::hk::HK&gt;</code> 对象<br>能生成 <code>Coin&lt;pkg_id::hk::HK&gt;</code></p>
+</li>
+</ol>
+<p> 4 .只有持有<code>Supply&lt;pkg_id::hk::HK&gt;</code> 对象才能发币, 以后无法手工创建<code>Supply&lt;pkg_id::hk::HK&gt;</code> 对象,因为</p>
+<p><code>public fun balance::create_supply&lt;T: drop&gt;(_: T): Supply&lt;T&gt;</code>  需要一个pkg_id::hk::HK 类型的对象做输入参数, package发布之后,无法通过编程创建.</p>
+<ol start="5">
+<li><p>TreasuryCap 只是Supply 对象的一种链上存储形式. </p>
+</li>
+<li><p>coin::create_currency 需要一个otw 对象, 这个方法才提供了CoinMetadata,才能当做真正的货币.</p>
+<figure class="highlight ts"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> fun create_currency&lt;<span class="attr">T</span>: drop&gt;(</span><br><span class="line">    <span class="attr">witness</span>: T,</span><br><span class="line">    <span class="attr">decimals</span>: u8,</span><br><span class="line">    <span class="attr">symbol</span>: vector&lt;u8&gt;,</span><br><span class="line">    <span class="attr">name</span>: vector&lt;u8&gt;,</span><br><span class="line">    <span class="attr">description</span>: vector&lt;u8&gt;,</span><br><span class="line">    <span class="attr">icon_url</span>: <span class="title class_">Option</span>&lt;<span class="title class_">Url</span>&gt;,</span><br><span class="line">    <span class="attr">ctx</span>: &amp;mut <span class="title class_">TxContext</span>,</span><br><span class="line">): (<span class="title class_">TreasuryCap</span>&lt;T&gt;, <span class="title class_">CoinMetadata</span>&lt;T&gt;) &#123;</span><br><span class="line">    <span class="comment">// Make sure there&#x27;s only one instance of the type T</span></span><br><span class="line">    assert!(<span class="attr">sui</span>::<span class="attr">types</span>::<span class="title function_">is_one_time_witness</span>(&amp;witness), <span class="title class_">EBadWitness</span>);</span><br><span class="line"></span><br><span class="line">    (</span><br><span class="line">        <span class="title class_">TreasuryCap</span> &#123;</span><br><span class="line">            <span class="attr">id</span>: <span class="attr">object</span>::<span class="title function_">new</span>(ctx),</span><br><span class="line">            <span class="attr">total_supply</span>: <span class="attr">balance</span>::<span class="title function_">create_supply</span>(witness),</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="title class_">CoinMetadata</span> &#123;</span><br><span class="line">            <span class="attr">id</span>: <span class="attr">object</span>::<span class="title function_">new</span>(ctx),</span><br><span class="line">            decimals,</span><br><span class="line">            <span class="attr">name</span>: <span class="attr">string</span>::<span class="title function_">utf8</span>(name),</span><br><span class="line">            <span class="attr">symbol</span>: <span class="attr">ascii</span>::<span class="title function_">string</span>(<span class="built_in">symbol</span>),</span><br><span class="line">            <span class="attr">description</span>: <span class="attr">string</span>::<span class="title function_">utf8</span>(description),</span><br><span class="line">            icon_url,</span><br><span class="line">        &#125;,</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>虽然也可以用balance::createSupply创建其他类型的balance 和coin,但是会当做其他对象看待.</p>
+<p>下文中不使用otw创建的Supply,可以用来创建balance和coin.</p>
+<p>不同用户都可以调用这个mint_to 方法. 创建出来的coin 不能视为代币,使用 sui client balance   不能看到.  因为没有对应的CoinMetadata</p>
+<figure class="highlight ts"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span> <span class="attr">strange_coin</span>::jp;</span><br><span class="line">use <span class="attr">sui</span>::<span class="attr">balance</span>::&#123;<span class="title class_">Supply</span>,<span class="title class_">Balance</span>&#125;;</span><br><span class="line"><span class="keyword">public</span> struct <span class="title class_">Other</span> has drop&#123;&#125;</span><br><span class="line"><span class="keyword">public</span> struct <span class="title class_">SupplyHold</span> has key,store&#123;</span><br><span class="line">    id : <span class="variable constant_">UID</span>,</span><br><span class="line">    supply :<span class="title class_">Supply</span>&lt;<span class="title class_">Other</span>&gt;,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> entry fun <span class="title function_">mint_to</span>(<span class="params">amount :u64,<span class="attr">to</span>:address,ctx : &amp;mut <span class="title class_">TxContext</span></span>)&#123;</span><br><span class="line">    <span class="keyword">let</span> other = <span class="title class_">Other</span>&#123;&#125;;</span><br><span class="line">    <span class="keyword">let</span> mut supply = <span class="attr">sui</span>::<span class="attr">balance</span>::<span class="title function_">create_supply</span>(other);</span><br><span class="line">    <span class="keyword">let</span> balance = supply.<span class="title function_">increase_supply</span>(amount);</span><br><span class="line">    <span class="keyword">let</span> coin = <span class="attr">sui</span>::<span class="attr">coin</span>::<span class="title function_">from_balance</span>(balance, ctx);</span><br><span class="line">    <span class="keyword">let</span> hold = <span class="title class_">SupplyHold</span>&#123;</span><br><span class="line">        id : <span class="attr">object</span>::<span class="title function_">new</span>(ctx),</span><br><span class="line">        supply,</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="attr">transfer</span>::<span class="title function_">public_transfer</span>(hold,<span class="attr">tx_context</span>::<span class="title function_">sender</span>(ctx));</span><br><span class="line">    <span class="attr">transfer</span>::<span class="title function_">public_transfer</span>(coin,to);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="10-move-table-对象的链上查看问题"><a href="#10-move-table-对象的链上查看问题" class="headerlink" title="10. move table 对象的链上查看问题"></a>10. move table 对象的链上查看问题</h3><ul>
+<li>问题查看</li>
+</ul>
+<p>move 中 Table 是通过 dynamic field 实现的，在浏览器中似乎没有办法查到 table 中所有的数据，table 对应的那个 object id 在sui浏览器中也无法访问。只是浏览器不支持，还是说不能实现在链下查到 table 里所有的数据。</p>
+<ul>
+<li><p>答复,可以看到动态字段</p>
+<h4 id="10-1-直接保存的table对象"><a href="#10-1-直接保存的table对象" class="headerlink" title="10.1  直接保存的table对象"></a>10.1  直接保存的table对象</h4><ul>
+<li>相关代码</li>
+</ul>
+<figure class="highlight ts"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span> <span class="attr">table_example</span>::table_example;</span><br><span class="line">use <span class="attr">sui</span>::<span class="attr">table</span>::&#123;<span class="title class_">Self</span>,<span class="title class_">Table</span>&#125;;</span><br><span class="line">use <span class="attr">std</span>::<span class="attr">string</span>::<span class="title class_">String</span>;</span><br><span class="line"></span><br><span class="line">fun <span class="title function_">init</span>(<span class="params">ctx : &amp;mut <span class="title class_">TxContext</span></span>)&#123;</span><br><span class="line">    <span class="keyword">let</span> mut tb =  <span class="attr">table</span>::<span class="keyword">new</span>&lt;<span class="title class_">String</span>,u32&gt;(ctx);</span><br><span class="line">    tb.<span class="title function_">add</span>(b<span class="string">&quot;abc&quot;</span>.<span class="title function_">to_string</span>(),<span class="number">1</span>);</span><br><span class="line">    tb.<span class="title function_">add</span>(b<span class="string">&quot;def&quot;</span>.<span class="title function_">to_string</span>(),<span class="number">2</span>);</span><br><span class="line">    <span class="attr">transfer</span>::<span class="title function_">public_transfer</span>(tb,<span class="attr">tx_context</span>::<span class="title function_">sender</span>(ctx));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><p>查看publish上去的对象</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sui client publish --skip-fetch-latest-git-deps  </span><br></pre></td></tr></table></figure>
+
+<p>相关log</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">╭──────────────────────────────────────────────────────────────────────────────────────────────────╮</span><br><span class="line">│ Object Changes                                                                                   │</span><br><span class="line">├──────────────────────────────────────────────────────────────────────────────────────────────────┤</span><br><span class="line">│ Created Objects:                                                                                 │</span><br><span class="line">│  ┌──                                                                                             │</span><br><span class="line">│  │ ObjectID: 0x007c0c0b8d4139290a27523bd2645833853bfa12b6278573083abf9a8a6f8f5c                  │</span><br><span class="line">│  │ Sender: 0x540105a7d2f5f54a812c630f2996f1790ed0e60d1f9a870ce397f03e4cec9b38                    │</span><br><span class="line">│  │ Owner: Object ID: ( 0x2e05841c8910b5450efc2744ad379a2986c73cd451fcac469833d0083ccacf9c )      │</span><br><span class="line">│  │ ObjectType: 0x2::dynamic_field::Field&lt;0x1::string::String, u32&gt;                               │</span><br><span class="line">│  │ Version: 206232477                                                                            │</span><br><span class="line">│  │ Digest: 3NMXpcaGLVMa81CPJmR6Da7pKB9xdksv3qTcQzwT3Bxb                                          │</span><br><span class="line">│  └──                                                                                             │</span><br><span class="line">│  ┌──                                                                                             │</span><br><span class="line">│  │ ObjectID: 0x2e05841c8910b5450efc2744ad379a2986c73cd451fcac469833d0083ccacf9c                  │</span><br><span class="line">│  │ Sender: 0x540105a7d2f5f54a812c630f2996f1790ed0e60d1f9a870ce397f03e4cec9b38                    │</span><br><span class="line">│  │ Owner: Account Address ( 0x540105a7d2f5f54a812c630f2996f1790ed0e60d1f9a870ce397f03e4cec9b38 ) │</span><br><span class="line">│  │ ObjectType: 0x2::table::Table&lt;0x1::string::String, u32&gt;                                       │</span><br><span class="line">│  │ Version: 206232477                                                                            │</span><br><span class="line">│  │ Digest: Ei39HsytUhDxrxWPX5uYohJ7CsSWbysxqvbTCEVKhZEf                                          │</span><br><span class="line">│  └──                                                  </span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>suiscan浏览</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://suiscan.xyz/testnet/object/0x2e05841c8910b5450efc2744ad379a2986c73cd451fcac469833d0083ccacf9c</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/image-20241110234724177.png" alt="image-20241110234724177"></p>
+<ul>
+<li>相关字段</li>
+</ul>
+<figure class="highlight ts"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// Adds a key-value pair to the table `table: &amp;mut Table&lt;K, V&gt;`</span></span><br><span class="line"><span class="comment">/// Aborts with `sui::dynamic_field::EFieldAlreadyExists` if the table already has an entry with</span></span><br><span class="line"><span class="comment">/// that key `k: K`.</span></span><br><span class="line"><span class="keyword">public</span> fun add&lt;<span class="attr">K</span>: copy + drop + store, <span class="attr">V</span>: store&gt;(<span class="attr">table</span>: &amp;mut <span class="title class_">Table</span>&lt;K, V&gt;, <span class="attr">k</span>: K, <span class="attr">v</span>: V) &#123;</span><br><span class="line">    <span class="attr">field</span>::<span class="title function_">add</span>(&amp;mut table.<span class="property">id</span>, k, v);</span><br><span class="line">    table.<span class="property">size</span> = table.<span class="property">size</span> + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>dynamic field,  通过table address 和 属性名,一起计算字段.</p>
+<figure class="highlight ts"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> fun add&lt;<span class="title class_">Name</span>: copy + drop + store, <span class="title class_">Value</span>: store&gt;(</span><br><span class="line">    <span class="comment">// we use &amp;mut UID in several spots for access control</span></span><br><span class="line">    <span class="attr">object</span>: &amp;mut <span class="variable constant_">UID</span>,</span><br><span class="line">    <span class="attr">name</span>: <span class="title class_">Name</span>,</span><br><span class="line">    <span class="attr">value</span>: <span class="title class_">Value</span>,</span><br><span class="line">) &#123;</span><br><span class="line">    <span class="keyword">let</span> object_addr = <span class="built_in">object</span>.<span class="title function_">to_address</span>();</span><br><span class="line">    <span class="keyword">let</span> hash = <span class="title function_">hash_type_and_key</span>(object_addr, name);</span><br><span class="line">    assert!(!<span class="title function_">has_child_object</span>(object_addr, hash), <span class="title class_">EFieldAlreadyExists</span>);</span><br><span class="line">    <span class="keyword">let</span> field = <span class="title class_">Field</span> &#123;</span><br><span class="line">        <span class="attr">id</span>: <span class="attr">object</span>::<span class="title function_">new_uid_from_hash</span>(hash),</span><br><span class="line">        name,</span><br><span class="line">        value,</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="title function_">add_child_object</span>(object_addr, field)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="table对象作为字段在-suivision-可以查看"><a href="#table对象作为字段在-suivision-可以查看" class="headerlink" title="table对象作为字段在 suivision 可以查看"></a>table对象作为字段在 suivision 可以查看</h4><p><a target="_blank" rel="noopener" href="https://testnet.suivision.xyz/object/0x0a6a64b85ce448afa134c0634487bdc7bb6d4f5a621237dc92e3f1671a2467fd">Sui Object</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://testnet.suivision.xyz/object/0x0a6a64b85ce448afa134c0634487bdc7bb6d4f5a621237dc92e3f1671a2467fd</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">struct</span> <span class="title">MyStore</span>  <span class="title">has</span> <span class="title">key</span> ,<span class="title">store</span>&#123;</span></span><br><span class="line">    id:UID,</span><br><span class="line">    total_balance : Balance&lt;SUI&gt;,</span><br><span class="line">    received: Table&lt;address,u64&gt; ,</span><br><span class="line">&#125; </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/images/image-20241111141423819.png" alt="image-20241111141423819"></p>
+<p>相关对象定义:</p>
+<figure class="highlight ts"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> struct <span class="title class_">MyStore</span>  has key ,store&#123;</span><br><span class="line">    <span class="attr">id</span>:<span class="variable constant_">UID</span>,</span><br><span class="line">    total_balance : <span class="title class_">Balance</span>&lt;<span class="variable constant_">SUI</span>&gt;,</span><br><span class="line">    <span class="attr">received</span>: <span class="title class_">Table</span>&lt;address,u64&gt; ,</span><br><span class="line">&#125; </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>但是相关动态字段的确看不到</p>
+<h3 id="11-sui-钱包地址和client地址"><a href="#11-sui-钱包地址和client地址" class="headerlink" title="11 sui  钱包地址和client地址"></a>11 sui  钱包地址和client地址</h3><p>钱包地址与 sui 客户端地址的关系</p>
+<ul>
+<li><p>两个不同得地址，可以认为你有两个钱包，每个钱包有不同得密码， 一般大家采用帮助记忆的12个单词来记忆</p>
+</li>
+<li><p>可以做钱包A中的coin  转移 到钱包B</p>
+<figure class="highlight bash"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#客户端钱包的地址，</span></span><br><span class="line"><span class="built_in">export</span>    C_ADDR=<span class="string">&quot;`sui client active-address`&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$C_ADDR</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 浏览器钱包的地址，可以修改成你的钱包地址</span></span><br><span class="line"><span class="built_in">export</span> W_ADDR=0xafe36044ef56d22494bfe6231e78dd128f097693f2d974761ee4d649e61f5fa2</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$W_ADDR</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 可以查到C_ADDR 的coin</span></span><br><span class="line">sui client gas <span class="variable">$C_ADDR</span></span><br><span class="line"></span><br><span class="line">ljl@ljl-i5-14400:~$ sui client gas <span class="variable">$C_ADDR</span></span><br><span class="line">╭────────────────────────────────────────────────────────────────────┬────────────────────┬──────────────────╮</span><br><span class="line">│ gasCoinId                                                          │ mistBalance (MIST) │ suiBalance (SUI) │</span><br><span class="line">├────────────────────────────────────────────────────────────────────┼────────────────────┼──────────────────┤</span><br><span class="line">│ 0xa957fcfae2a624189f4ee5e24d07be6f2e492668c8a8a3a810bb684c7ae25300 │ 3667910060         │ 3.66             │</span><br><span class="line">│ 0xb2fbb77f3168b61d21ac6c005086a1747ce451df29ade1be057c4eefcd17493b │ 1000000000         │ 1.00             │</span><br><span class="line">│ 0xda2e7328acd44f9167e306f18debf134f4200f9339241d904bc2bdd18266b00d │ 1000000000         │ 1.00             │</span><br><span class="line">╰────────────────────────────────────────────────────────────────────┴────────────────────┴──────────────────╯</span><br><span class="line"></span><br><span class="line">sui client balance <span class="variable">$W_ADDR</span></span><br><span class="line"><span class="comment"># 根据输出的gasCoinId 发送给W_ADDR</span></span><br><span class="line"><span class="built_in">export</span> COIN=0xda2e7328acd44f9167e306f18debf134f4200f9339241d904bc2bdd18266b00d</span><br><span class="line"></span><br><span class="line">sui client transfer --to <span class="variable">$W_ADDR</span> --object-id <span class="variable">$COIN</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看钱包中的coin</span></span><br><span class="line"></span><br><span class="line">sui client gas <span class="variable">$W_ADDR</span></span><br><span class="line">╭────────────────────────────────────────────────────────────────────┬────────────────────┬──────────────────╮</span><br><span class="line">│ gasCoinId                                                          │ mistBalance (MIST) │ suiBalance (SUI) │</span><br><span class="line">├────────────────────────────────────────────────────────────────────┼────────────────────┼──────────────────┤</span><br><span class="line">│ 0x2cbbd85ae56bb9d95746797283a6ef045fdad20d76bfe5690097f6467f96693a │ 997666048          │ 0.99             │</span><br><span class="line">│ 0x761035a215b60f6d3c08dff837b85a67f1e2620ba63a0904785924d37095c201 │ 922766720          │ 0.92             │</span><br><span class="line">│ 0xda2e7328acd44f9167e306f18debf134f4200f9339241d904bc2bdd18266b00d │ 1000000000         │ 1.00             │</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">sui client balance <span class="variable">$W_ADDR</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="我们每次做publish或move-call，都需要区块链网络计算和存储，这些计算和存储需要消耗gas值。"><a href="#我们每次做publish或move-call，都需要区块链网络计算和存储，这些计算和存储需要消耗gas值。" class="headerlink" title="我们每次做publish或move-call，都需要区块链网络计算和存储，这些计算和存储需要消耗gas值。"></a>我们每次做publish或move-call，都需要区块链网络计算和存储，这些计算和存储需要消耗gas值。</h3><p><img src="/images/image-20241110231811470.png" alt="image-20241110231811470"></p>
+<h3 id="12-查看当前支持的网络"><a href="#12-查看当前支持的网络" class="headerlink" title="12 查看当前支持的网络"></a>12 查看当前支持的网络</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> sui client envs</span><br><span class="line">╭─────────┬─────────────────────────────────────┬────────╮</span><br><span class="line">│ <span class="built_in">alias</span>   │ url                                 │ active │</span><br><span class="line">├─────────┼─────────────────────────────────────┼────────┤</span><br><span class="line">│ testnet │ https://fullnode.testnet.sui.io:443 │ *      │</span><br><span class="line">│ devnet  │ https://fullnode.devnet.sui.io:443  │        │</span><br><span class="line">│ <span class="built_in">local</span>   │ http://127.0.0.1:9000               │        │</span><br><span class="line">│ mainnet │ https://fullnode.mainnet.sui.io:443 │        │</span><br><span class="line">╰─────────┴─────────────────────────────────────┴────────╯</span><br></pre></td></tr></table></figure>
+
+
+
+<p>配置网络devnet</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sui client new-env --<span class="built_in">alias</span> devnet --rpc https://fullnode.devnet.sui.io:443</span><br></pre></td></tr></table></figure>
+
+
+
+<p>如果没有devnet</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sui client switch --env  devnet</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="11-自动publish到了devnet上面，不知道怎么回事，scan上面在devnet上能搜到id，但是source-code显示不出"><a href="#11-自动publish到了devnet上面，不知道怎么回事，scan上面在devnet上能搜到id，但是source-code显示不出" class="headerlink" title="11 自动publish到了devnet上面，不知道怎么回事，scan上面在devnet上能搜到id，但是source code显示不出"></a>11 自动publish到了devnet上面，不知道怎么回事，scan上面在devnet上能搜到id，但是source code显示不出</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#  查看当前的环境</span><br><span class="line">sui client envs</span><br><span class="line">╭─────────┬─────────────────────────────────────┬────────╮</span><br><span class="line">│ alias   │ url                                 │ active │</span><br><span class="line">├─────────┼─────────────────────────────────────┼────────┤</span><br><span class="line">│ testnet │ https://fullnode.testnet.sui.io:443 │        │</span><br><span class="line">│ devnet  │ https://fullnode.devnet.sui.io:443  │ *      │</span><br><span class="line">│ local   │ http://127.0.0.1:9000               │        │</span><br><span class="line">│ mainnet │ https://fullnode.mainnet.sui.io:443 │        │</span><br><span class="line">╰─────────┴─────────────────────────────────────┴────────╯</span><br><span class="line"># 带星号的是当前的环境</span><br><span class="line">sui client active-env</span><br><span class="line"># 切换环境到testnet</span><br><span class="line"> sui client switch --env  testnet</span><br><span class="line">Active environment switched to [testnet]</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="13-ability"><a href="#13-ability" class="headerlink" title="13  ability"></a>13  ability</h3><ul>
+<li>问题: move的基础语法不熟悉，比如::是什么意思，drop、key这些都是什么含义等等，感觉可以边helloworld边讲解一下语法，每个词对应的意思，为什么需要这些</li>
+</ul>
+<p>参看 move-book.com ,可以使用浏览器翻译查看</p>
+<h4 id="-1"><a href="#-1" class="headerlink" title></a></h4><p>对象的4中能力(abliity)</p>
+<p>这四种能力是：</p>
+<ul>
+<li><p><code>copy</code></p>
+<ul>
+<li>允许复制具有此功能的类型的值。</li>
+</ul>
+</li>
+<li><p><code>drop</code></p>
+<ul>
+<li>允许跳出作用域自动删除</li>
+</ul>
+</li>
+<li><p><code>store</code></p>
+<ul>
+<li>允许具有此功能的类型的值存在于 链上中的值中。  存在sui 网络上的对象的字段</li>
+<li>对于 Sui，控制对象内部可以存储哪些<a target="_blank" rel="noopener" href="https://move-book.com/reference/abilities/object.html">数据。</a> 还控制哪些类型可以在其定义模块之外传</li>
+</ul>
+</li>
+<li><p><code>key</code></p>
+<ul>
+<li><p>允许类型用作存储的 “key”。表面上，这意味着该值可以是 存储中的顶级价值;换句话说，它不需要包含在另一个值中，以 在仓库里。</p>
+</li>
+<li><p>对于 Sui，用于表示<a target="_blank" rel="noopener" href="https://move-book.com/reference/abilities/object.html">对象</a>。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>13.1 对象的几种存储状态:</p>
+<h5 id="13-1-1-销毁"><a href="#13-1-1-销毁" class="headerlink" title="13.1.1 销毁:"></a>13.1.1 销毁:</h5><ul>
+<li><p>离开作用域自动销毁,具有drop能力</p>
+<figure class="highlight ts"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> struct <span class="title class_">IgnoreMe</span> has drop&#123;</span><br><span class="line">    <span class="attr">a</span>:u32,</span><br><span class="line">    <span class="attr">b</span>:u32</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line">#[test]</span><br><span class="line">fun <span class="title function_">test_ignore</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">let</span> im = <span class="title class_">IgnoreMe</span>&#123;<span class="attr">a</span>:<span class="number">3</span>,<span class="attr">b</span>:<span class="number">4</span>&#125;;</span><br><span class="line">    <span class="title function_">print</span>(&amp;im);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上文定义的IgnoreMe 对象im 具有自动析构的能力<code>has drop</code>,在离开函数的作用域时候自动析构.</p>
+</li>
+<li><p>编码主动析构</p>
+</li>
+</ul>
+ <figure class="highlight ts"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> struct <span class="title class_">NoDrop</span>&#123; value :u64 &#125;</span><br><span class="line"></span><br><span class="line"> #[test]</span><br><span class="line"> fun <span class="title function_">test_nodrop</span>(<span class="params"></span>)&#123;</span><br><span class="line">     <span class="keyword">let</span> no_drop = <span class="title class_">NoDrop</span>&#123; value :<span class="number">34</span>&#125;;</span><br><span class="line">     <span class="title function_">print</span>(&amp;no_drop);</span><br><span class="line">     </span><br><span class="line">     <span class="keyword">let</span> <span class="title class_">NoDrop</span>&#123; <span class="attr">value</span>: _ &#125; = no_drop;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个例子 NoDrop类型没有drop能力,对象离开作用域,需要析构,或者将对象的所有权转移.</p>
+<ul>
+<li>第8行是析构对象的代码</li>
+</ul>
+<h5 id="13-1-2-转移"><a href="#13-1-2-转移" class="headerlink" title="13.1.2 转移:"></a>13.1.2 转移:</h5><h4 id="-2"><a href="#-2" class="headerlink" title></a></h4> <figure class="highlight ts"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">fun <span class="title function_">useNoDrop</span>(o : <span class="title class_">NoDrop</span> ) : <span class="title class_">NoDrop</span>&#123;</span><br><span class="line">    <span class="attr">std</span>::<span class="attr">debug</span>::<span class="title function_">print</span>(&amp;o);</span><br><span class="line">    o</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#[test]</span><br><span class="line">fun <span class="title function_">testUseNoDrop</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">let</span> o = <span class="title class_">NoDrop</span>&#123;value :<span class="number">4</span>&#125;;</span><br><span class="line">    <span class="keyword">let</span> d = <span class="title function_">useNoDrop</span>(o);</span><br><span class="line">    <span class="title class_">NoDrop</span>&#123;<span class="attr">value</span>:_&#125; = d;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>第1行函数UseNoDrop获得了对象o</li>
+<li>第3行,函数将N哦Drop对象o 返回出去,将所有权转移出去.</li>
+<li>第10 行,显示代码析构这个NoDrop对象</li>
+</ul>
+<h5 id="13-1-3-key-独立存储在链上"><a href="#13-1-3-key-独立存储在链上" class="headerlink" title="13.1.3  key:独立存储在链上:"></a>13.1.3  key:独立存储在链上:</h5><p>对象独立存储在链上,必须具有key能力 <code>has key</code></p>
+<p><img src="/images/image-20241114085958845.png" alt="image-20241114085958845"></p>
+<figure class="highlight ts"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> struct <span class="title class_">Keyable</span> has key&#123;</span><br><span class="line">    id : <span class="variable constant_">UID</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#[test]</span><br><span class="line">fun <span class="title function_">test_key</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">let</span> mut ctx = tx_context ::<span class="title function_">dummy</span>();</span><br><span class="line">    <span class="keyword">let</span> k = <span class="title class_">Keyable</span>&#123; <span class="attr">id</span>: <span class="attr">object</span>::<span class="title function_">new</span>(&amp;mut ctx)&#125;;</span><br><span class="line">    <span class="attr">std</span>::<span class="attr">debug</span>::<span class="title function_">print</span>(&amp;k);</span><br><span class="line">    <span class="attr">transfer</span>::<span class="title function_">transfer</span>(k,ctx.<span class="title function_">sender</span>());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个例子中Keyable是具有key能力的,可以通过transfer传递到sui网络上存储, 指定owner地址.</p>
+<h5 id="13-1-4-对象作为-共享对象存储在链上-需要具有key能力"><a href="#13-1-4-对象作为-共享对象存储在链上-需要具有key能力" class="headerlink" title="13.1.4  对象作为 共享对象存储在链上,需要具有key能力"></a>13.1.4  对象作为 共享对象存储在链上,需要具有key能力</h5><p><img src="/images/image-20241114091033160.png" alt="image-20241114091033160"></p>
+<h5 id="13-1-4-对象作为一个对象的一部分存储-需要具有store能力"><a href="#13-1-4-对象作为一个对象的一部分存储-需要具有store能力" class="headerlink" title="13.1.4 对象作为一个对象的一部分存储,需要具有store能力"></a>13.1.4 对象作为一个对象的一部分存储,需要具有store能力</h5><figure class="highlight ts"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">use <span class="attr">std</span>::<span class="attr">string</span>::<span class="title class_">String</span>;</span><br><span class="line"><span class="keyword">public</span> struct <span class="title class_">Grandson</span> has store&#123;</span><br><span class="line">    name : <span class="title class_">String</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> struct <span class="title class_">Child</span> has store&#123;</span><br><span class="line">    name : <span class="title class_">String</span>,</span><br><span class="line">    child : <span class="title class_">Grandson</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> struct <span class="title class_">Parent</span> has key&#123;</span><br><span class="line">    <span class="attr">id</span>: <span class="variable constant_">UID</span>,</span><br><span class="line">    <span class="attr">child</span>: <span class="title class_">Child</span>,</span><br><span class="line">&#125;</span><br><span class="line">#[test]</span><br><span class="line">fun  <span class="title function_">test_store_child</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">let</span> mut ctx = <span class="attr">tx_context</span>::<span class="title function_">dummy</span>();</span><br><span class="line">    <span class="keyword">let</span> foo = <span class="title class_">Parent</span> &#123;</span><br><span class="line">        id : <span class="attr">object</span>::<span class="title function_">new</span>(&amp;mut ctx),</span><br><span class="line">        <span class="attr">child</span>: <span class="title class_">Child</span> &#123;</span><br><span class="line">            name : b<span class="string">&quot;one child&quot;</span>.<span class="title function_">to_string</span>(),</span><br><span class="line">            <span class="attr">child</span>: <span class="title class_">Grandson</span>&#123;</span><br><span class="line">                name : b<span class="string">&quot;a grandson&quot;</span>.<span class="title function_">to_string</span>(),</span><br><span class="line"></span><br><span class="line">            &#125;,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="attr">std</span>::<span class="attr">debug</span>::<span class="title function_">print</span>(&amp;foo);</span><br><span class="line">    <span class="attr">transfer</span>::<span class="title function_">freeze_object</span>(foo);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>Parent是独立存储,具有key能力</p>
+</li>
+<li><p>Child 都是作为独立存储对象Parent的字段</p>
+</li>
+<li><p>Grandson 作为Child的字段存储在链上,</p>
+</li>
+<li><p>Child 和Grandson 都具有store能力</p>
+</li>
+</ul>
+<p><img src="/images/image-20241114095326972.png" alt="image-20241114095326972"></p>
+<p>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/ifadai/article/details/136046263">https://blog.csdn.net/ifadai/article/details/136046263</a><br><a target="_blank" rel="noopener" href="https://move-book.com/reference/abilities.html">类型技能 - Move 参考</a></p>
+<h4 id="13-2-四种能力"><a href="#13-2-四种能力" class="headerlink" title="13.2 四种能力"></a>13.2 <a target="_blank" rel="noopener" href="https://move-book.com/reference/abilities.html#the-four-abilities">四种能力</a></h4><p>这四种能力是：</p>
+<ul>
+<li><p><code>copy</code></p>
+<ul>
+<li>允许复制具有此功能的类型的值。</li>
+</ul>
+</li>
+<li><p><code>drop</code></p>
+<ul>
+<li>允许跳出作用域自动删除</li>
+</ul>
+</li>
+<li><p><code>store</code></p>
+<ul>
+<li>允许具有此功能的类型的值存在于 链上中的值中。  存在sui 网络上的对象的字段</li>
+<li>对于 Sui，控制对象内部可以存储哪些<a target="_blank" rel="noopener" href="https://move-book.com/reference/abilities/object.html">数据。</a> 还控制哪些类型可以在其定义模块之外传</li>
+</ul>
+</li>
+<li><p><code>key</code></p>
+<ul>
+<li><p>允许类型用作存储的 “key”。表面上，这意味着该值可以是 存储中的顶级价值;换句话说，它不需要包含在另一个值中，以 在仓库里。</p>
+</li>
+<li><p>对于 Sui，用于表示<a target="_blank" rel="noopener" href="https://move-book.com/reference/abilities/object.html">对象</a>。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="13-2-1-如果有copy能力-赋值就是拷贝成一个新对象"><a href="#13-2-1-如果有copy能力-赋值就是拷贝成一个新对象" class="headerlink" title="13.2.1 如果有copy能力,赋值就是拷贝成一个新对象"></a>13.2.1 如果有copy能力,赋值就是拷贝成一个新对象</h4><p><img src="/images/image-20241111194804064.png" alt="image-20241111194804064"></p>
+<ul>
+<li><p>上图中27行,c对象被拷贝到d,c和d指向的不是同一个对象, </p>
+</li>
+<li><p>28 行修改了d,但是c没有被修改</p>
+</li>
+<li><p>32行和33行中,c和d取值不同.</p>
+</li>
+</ul>
+<h4 id="13-2-如果没有copy-能力-赋值就是移动对象"><a href="#13-2-如果没有copy-能力-赋值就是移动对象" class="headerlink" title="13.2 如果没有copy 能力,赋值就是移动对象"></a>13.2 如果没有copy 能力,赋值就是移动对象</h4><p><img src="/images/image-20241111194357890.png" alt="image-20241111194357890"></p>
+<h4 id="13-3-如果没有ability-就必须在module内提供方法去析构它"><a href="#13-3-如果没有ability-就必须在module内提供方法去析构它" class="headerlink" title="13.3 如果没有ability,就必须在module内提供方法去析构它"></a>13.3 如果没有ability,就必须在module内提供方法去析构它</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/images/image-20241114080921239.png" alt="image-20241114080921239"></p>
+<p><img src="/images/image-20241111213310276.png" alt="image-20241111213310276"></p>
+<ul>
+<li>定义闪电贷的出借方,在borrow的时候获得Coin和 Loan对象,  </li>
+<li>在repay的时候才能销毁Loan对象, 如果借出放不调用repay,无法销毁Loan对象,交易会回滚.</li>
+<li>replay的时候需要校验传入的coin 要多于borrow的coin, 多出来的部分作为回报.<ul>
+<li>下面是 贷方代码的例子</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c++"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> book::loan;</span><br><span class="line"><span class="comment">//hot potato pattern</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">struct</span> <span class="title class_">Loan</span>&#123;</span><br><span class="line">    feedback: u64, <span class="comment">//还钱数</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">struct</span> <span class="title class_">Coin</span> has key,store&#123;</span><br><span class="line">	id:UID,</span><br><span class="line">	amount:u64</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//借出钱</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> fun <span class="title">borrow</span><span class="params">(amount:u64,ctx:&amp;mut TxContext)</span> :(Coin,Loan)&#123;</span></span><br><span class="line">	let feedback = amount * <span class="number">103</span> /<span class="number">100</span>;</span><br><span class="line">	let c = Coin&#123; id: object::<span class="built_in">new</span>(ctx),amount&#125;;</span><br><span class="line">	(c, Loan&#123;feedback&#125;) </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> ErrNotEnoughFeedback:u64 = <span class="number">43</span>;</span><br><span class="line"><span class="type">const</span> OWNER_ADDR :address = @<span class="number">0xafe36044ef56d22494bfe6231e78dd128f097693f2d974761ee4d649e61f5fa2</span>;<span class="comment">//todo</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> fun <span class="title">repay</span><span class="params">(coin: Coin,loan:Loan)</span></span>&#123;</span><br><span class="line">	assert!(coin.amount &gt;= loan.feedback,ErrNotEnoughFeedback);</span><br><span class="line">	transfer::<span class="built_in">public_transfer</span>(coin,OWNER_ADDR);</span><br><span class="line">	Loan&#123; feedback:_&#125; = loan;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">``` &#123;.line-numbers&#125;</span><br><span class="line"></span><br><span class="line">下面是借方模块的代码,使用测试代码演示</span><br><span class="line"></span><br><span class="line">```c++</span><br><span class="line">#[test_only]</span><br><span class="line"><span class="keyword">module</span> book::test_loan;</span><br><span class="line">use book::loan::Coin;</span><br><span class="line"></span><br><span class="line"><span class="comment">////todo 贷款后赚钱的业务逻辑,这里没有实现</span></span><br><span class="line"><span class="function">fun <span class="title">earn_money</span><span class="params">(coin : Coin )</span> :Coin&#123;</span></span><br><span class="line">    coin</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#[test]</span><br><span class="line">#[<span class="built_in">expected_failure</span>(abort_code=book::loan::ErrNotEnoughFeedback)]</span><br><span class="line"><span class="function">fun <span class="title">borrow_test</span><span class="params">()</span></span>&#123;</span><br><span class="line">	let mut ctx = tx_context::<span class="built_in">dummy</span>();</span><br><span class="line">	<span class="built_in">let</span> (coin,loan) = book::loan::<span class="built_in">borrow</span>(<span class="number">233</span>,&amp;mut ctx);</span><br><span class="line">	let new_money = <span class="built_in">earn_money</span>(coin);</span><br><span class="line">	book::loan::<span class="built_in">repay</span>(new_money,loan);</span><br><span class="line">	<span class="comment">//todo 赚钱了，可以把feedback-amount 的钱，存入自己钱包</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h4 id="13-5-key-ability"><a href="#13-5-key-ability" class="headerlink" title="13.5 key ability"></a>13.5 key ability</h4><p>目前其他模块存到链上的对象,都需要key+store能力</p>
+<p>transfer::public_transfer</p>
+<p>transfer::public_freeze_object </p>
+<p>transfer::public_share_object</p>
+<p><img src="/images/image-20241111213712296.png" alt="image-20241111213712296"></p>
+<h4 id="store"><a href="#store" class="headerlink" title="store"></a>store</h4><p>可以作为存在链上对象的一个字段.</p>
+<p><img src="/images/image-20241111213346673.png" alt="image-20241111213346673"></p>
+<h3 id="11-切割coin"><a href="#11-切割coin" class="headerlink" title="11 切割coin"></a>11 切割coin</h3><p>下例 从当前的余额中分割出来 0.05 个sui , 然后传给当前地址</p>
+<figure class="highlight bash"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> C_ADDR=`sui client  active-address`</span><br><span class="line"></span><br><span class="line">sui client ptb \</span><br><span class="line">--split-coins gas [1000] \</span><br><span class="line">--assign coin \</span><br><span class="line">--transfer-objects [coin] @<span class="variable">$C_ADDR</span> \</span><br><span class="line">--gas-budget 50000000</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h2 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h2><table>
+<thead>
+<tr>
+<th>2024年11月10日 11:49</th>
+<th>adadadadadadad</th>
+<th>吾妻天依美如画</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2024年11月10日 11:52</td>
+<td>完全按照视频中操作，却与视频中得到的结果不一样，可能是版本和系统不一样吧，但自己又不会调试</td>
+<td>恸</td>
+</tr>
+<tr>
+<td>2024年11月10日 11:57</td>
+<td>小白提问预编译的下载包如何使用</td>
+<td>krypton</td>
+</tr>
+<tr>
+<td>2024年11月10日 12:00</td>
+<td>见证者对象有什么作用，我在好几个地方看到，只知道怎么用，不知道为什么要这么写</td>
+<td>柠栀gardenia</td>
+</tr>
+<tr>
+<td>2024年11月10日 14:02</td>
+<td>move 中 Table 是通过 dynamic field 实现的，在浏览器中似乎没有办法查到 table 中所有的数据，table 对应的那个 object id 在sui浏览器中也无法访问。只是浏览器不支持，还是说不能实现在链下查到 table 里所有的数据。</td>
+<td>Allen</td>
+</tr>
+<tr>
+<td>2024年11月10日 16:17</td>
+<td>钱包地址与 sui 客户端地址的关系</td>
+<td>罗基</td>
+</tr>
+<tr>
+<td>2024年11月10日 21:05</td>
+<td>git pull pull不下来，报错过早文件结束</td>
+<td>啊吧啊吧</td>
+</tr>
+<tr>
+<td>2024年11月11日 12:41</td>
+<td>自动publish到了devnet上面，不知道怎么回事，scan上面在devnet上能搜到id，但是source code显示不出</td>
+<td>洗头就是爽</td>
+</tr>
+<tr>
+<td>2024年11月11日 14:15</td>
+<td>move的基础语法不熟悉，比如::是什么意思，drop、key这些都是什么含义等等，感觉可以边helloworld边讲解一下语法，每个词对应的意思，为什么需要这些</td>
+<td>周雨阳</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.walrus.mov/2024/11/11/sui/sui-colearn-qa1/" data-id="cm3n9q6w500004eo37lb4ceaf" data-title="2024 -11-11  第一周Sui Move训练营课程答疑问题" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/move/" rel="tag">move</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sui/" rel="tag">sui</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/11/18/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/11/10/sui/sui-coin-concepts/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">sui coin 的一些概念 设计思想和练习</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/dns/">dns</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/sui/">sui</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ability/" rel="tag">ability</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dns/" rel="tag">dns</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-page/" rel="tag">github page</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/move/" rel="tag">move</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sui/" rel="tag">sui</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ability/" style="font-size: 15px;">ability</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/dns/" style="font-size: 10px;">dns</a> <a href="/tags/github-page/" style="font-size: 10px;">github page</a> <a href="/tags/move/" style="font-size: 20px;">move</a> <a href="/tags/sui/" style="font-size: 20px;">sui</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/11/19/hexo-install-tips/">使用hexo搭建个人主页</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/18/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/11/sui/sui-colearn-qa1/">2024 -11-11  第一周Sui Move训练营课程答疑问题</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/10/sui/sui-coin-concepts/">sui coin 的一些概念 设计思想和练习</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/10/sui/sui-move-ability/">Move 对象的有4种能力(abliity) 设计考虑</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 nextuser<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
