@@ -75,6 +75,92 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-sui/sui move-attach" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/11/20/sui/sui%20move-attach/" class="article-date">
+  <time class="dt-published" datetime="2024-11-20T00:57:28.221Z" itemprop="datePublished">2024-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="sui-move-的一种攻击场景探讨-（包升级-adminCap）"><a href="#sui-move-的一种攻击场景探讨-（包升级-adminCap）" class="headerlink" title="sui move 的一种攻击场景探讨 （包升级 adminCap）"></a>sui move 的一种攻击场景探讨 （包升级 adminCap）</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">module upgrade_demo::upgrade_demo &#123;</span><br><span class="line">    use sui::object::&#123;Self, UID&#125;;</span><br><span class="line">    use sui::transfer;</span><br><span class="line">    use sui::balance::&#123;Self, Balance&#125;;</span><br><span class="line">    use sui::coin::&#123;Self, Coin&#125;;</span><br><span class="line">    use sui::sui::SUI;</span><br><span class="line">    use sui::tx_context::&#123;Self, TxContext&#125;;</span><br><span class="line">    </span><br><span class="line">    // 错误码</span><br><span class="line">    const ENotAdmin: u64 = 0;</span><br><span class="line">    const EInsufficientBalance: u64 = 1;</span><br><span class="line"></span><br><span class="line">    // 管理员权限凭证</span><br><span class="line">    public struct AdminCap has key, store &#123;</span><br><span class="line">        id: UID</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 金库结构</span><br><span class="line">    public struct Treasury has key &#123;</span><br><span class="line">        id: UID,</span><br><span class="line">        balance: Balance&lt;SUI&gt;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 初始化函数 - 创建管理员凭证和金库</span><br><span class="line">    fun init(ctx: &amp;mut TxContext) &#123;</span><br><span class="line">        let admin_cap = AdminCap &#123;</span><br><span class="line">            id: object::new(ctx)</span><br><span class="line">        &#125;;</span><br><span class="line">        </span><br><span class="line">        let treasury = Treasury &#123;</span><br><span class="line">            id: object::new(ctx),</span><br><span class="line">            balance: balance::zero(),</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        // 将AdminCap转移给部署合约的地址</span><br><span class="line">        transfer::transfer(admin_cap, tx_context::sender(ctx));</span><br><span class="line">        // 共享金库对象</span><br><span class="line">        transfer::share_object(treasury);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 存入SUI代币</span><br><span class="line">    public fun deposit(treasury: &amp;mut Treasury, payment: Coin&lt;SUI&gt;) &#123;</span><br><span class="line">        sui::balance::join(&amp;mut treasury.balance, payment.into_balance());</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 管理员提取SUI代币</span><br><span class="line">    public fun withdraw(</span><br><span class="line">        treasury: &amp;mut Treasury, </span><br><span class="line">        amount: u64,</span><br><span class="line">        _admin_cap: &amp;AdminCap,</span><br><span class="line">        ctx: &amp;mut TxContext</span><br><span class="line">    ): Coin&lt;SUI&gt; &#123;</span><br><span class="line">        // 检查余额是否充足</span><br><span class="line">        assert!(balance::value(&amp;treasury.balance) &gt;= amount, EInsufficientBalance);</span><br><span class="line">        </span><br><span class="line">        // 从金库中提取代币</span><br><span class="line">        coin::from_balance(balance::split(&amp;mut treasury.balance, amount), ctx)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 查询金库余额</span><br><span class="line">    public fun balance(treasury: &amp;Treasury): u64 &#123;</span><br><span class="line">        balance::value(&amp;treasury.balance)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>设想这样一种攻击场景</p>
+<ul>
+<li><p>A 创建合约，将对象转移给自己， </p>
+</li>
+<li><p>A和B（可能线下）交易，出售，将AdminCap 对象转移给B,  </p>
+</li>
+<li><p>B拥有AdminCap对象admin1，可以调用withdraw成功， </p>
+</li>
+<li><p>A 抢在B没有取钱之前，A可以升级合约，创建要给新的AdminCap对象admin2，转移给自己。 然后自己调用withdrawwithdraw，偷取B的钱，<br>所以我觉得一方面otw 能保证唯一性， 另一方面业务代码最好校验一下AdminCap对象的id ，这样才安全。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.walrus.mov/2024/11/20/sui/sui%20move-attach/" data-id="cm3pg1bft0001zno34n944n1w" data-title="" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-walrus/walrus-first" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/11/19/walrus/walrus-first/" class="article-date">
+  <time class="dt-published" datetime="2024-11-19T03:37:09.759Z" itemprop="datePublished">2024-11-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>参考资料：</p>
+<ul>
+<li>（sui warus 教程）[<a target="_blank" rel="noopener" href="https://letswalrus.vercel.app/docs/arch/encode]">https://letswalrus.vercel.app/docs/arch/encode]</a></li>
+</ul>
+<ul>
+<li>install</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git@github.com:MystenLabs/walrus-sites.git</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.walrus.mov/2024/11/19/walrus/walrus-first/" data-id="cm3nwlqw800015wo37f0006mm" data-title="" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-hexo-install-tips" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2024/11/19/hexo-install-tips/" class="article-date">
@@ -774,6 +860,181 @@
 
 
   
+    <article id="post-sui/sui-cap-transfer" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/11/11/sui/sui-cap-transfer/" class="article-date">
+  <time class="dt-published" datetime="2024-11-11T13:47:08.000Z" itemprop="datePublished">2024-11-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/sui/">sui</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/11/11/sui/sui-cap-transfer/">2024 -11-20  sui 存钱罐的权限控制和pacakge升级带来的风险</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1.概述"></a>1.概述</h2><ul>
+<li>假设写一个存钱罐合约，可以从合约中存入货币，提取货币，<ul>
+<li>存钱不控制权限，每个人都能存</li>
+<li>只有拥有AdminCap对象的人才能取钱。<ul>
+<li>取钱函数有一个AdminCap参数，sui 判断谁拥有Admincap 对象才能调用 withdraw</li>
+</ul>
+</li>
+<li>合约构造者A可以将AdminCap对象 转让给B<ul>
+<li>表面上只有B 能获得权限取钱</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>风险<ul>
+<li>合约构造者还拥有升级合约的权限，可能通过升级合约来获取新的取钱权限</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-合约代码"><a href="#2-合约代码" class="headerlink" title="2. 合约代码"></a>2. 合约代码</h2><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">module upgrade_demo::upgrade_demo ;</span><br><span class="line">    <span class="keyword">use</span> sui::object::&#123;<span class="keyword">Self</span>, UID&#125;;</span><br><span class="line">    <span class="keyword">use</span> sui::transfer;</span><br><span class="line">    <span class="keyword">use</span> sui::balance::&#123;<span class="keyword">Self</span>, Balance&#125;;</span><br><span class="line">    <span class="keyword">use</span> sui::coin::&#123;<span class="keyword">Self</span>, Coin&#125;;</span><br><span class="line">    <span class="keyword">use</span> sui::sui::SUI;</span><br><span class="line">    <span class="keyword">use</span> sui::tx_context::&#123;<span class="keyword">Self</span>, TxContext&#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 错误码</span></span><br><span class="line">    <span class="keyword">const</span> ENotAdmin: <span class="type">u64</span> = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">const</span> EInsufficientBalance: <span class="type">u64</span> = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 管理员权限凭证</span></span><br><span class="line">    public <span class="keyword">struct</span> <span class="title class_">AdminCap</span> has key, store &#123;</span><br><span class="line">        id: UID</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 金库结构</span></span><br><span class="line">    public <span class="keyword">struct</span> <span class="title class_">Treasury</span> has key &#123;</span><br><span class="line">        id: UID,</span><br><span class="line">        balance: Balance&lt;SUI&gt;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 初始化函数 - 创建管理员凭证和金库</span></span><br><span class="line">    fun <span class="title function_ invoke__">init</span>(ctx: &amp;<span class="keyword">mut</span> TxContext) &#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="variable">admin_cap</span> = AdminCap &#123;</span><br><span class="line">            id: object::<span class="title function_ invoke__">new</span>(ctx)</span><br><span class="line">        &#125;;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">let</span> <span class="variable">treasury</span> = Treasury &#123;</span><br><span class="line">            id: object::<span class="title function_ invoke__">new</span>(ctx),</span><br><span class="line">            balance: balance::<span class="title function_ invoke__">zero</span>(),</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 将AdminCap转移给部署合约的地址</span></span><br><span class="line">        transfer::<span class="title function_ invoke__">transfer</span>(admin_cap, tx_context::<span class="title function_ invoke__">sender</span>(ctx));</span><br><span class="line">        <span class="comment">// 共享金库对象</span></span><br><span class="line">        transfer::<span class="title function_ invoke__">share_object</span>(treasury);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 存入SUI代币</span></span><br><span class="line">    public fun <span class="title function_ invoke__">deposit</span>(treasury: &amp;<span class="keyword">mut</span> Treasury, payment: Coin&lt;SUI&gt;) &#123;</span><br><span class="line">        sui::balance::<span class="title function_ invoke__">join</span>(&amp;<span class="keyword">mut</span> treasury.balance, payment.<span class="title function_ invoke__">into_balance</span>());</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">     <span class="comment">// 管理员提取SUI代币</span></span><br><span class="line">    public fun <span class="title function_ invoke__">withdraw</span>(</span><br><span class="line">        treasury: &amp;<span class="keyword">mut</span> Treasury, </span><br><span class="line">        amount: <span class="type">u64</span>,</span><br><span class="line">        _admin_cap: &amp;AdminCap,</span><br><span class="line">        ctx: &amp;<span class="keyword">mut</span> TxContext</span><br><span class="line">    ): Coin&lt;SUI&gt; &#123;</span><br><span class="line">        <span class="comment">// 检查余额是否充足</span></span><br><span class="line">        <span class="built_in">assert!</span>(balance::<span class="title function_ invoke__">value</span>(&amp;treasury.balance) &gt;= amount, EInsufficientBalance);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 从金库中提取代币</span></span><br><span class="line">        coin::<span class="title function_ invoke__">from_balance</span>(balance::<span class="title function_ invoke__">split</span>(&amp;<span class="keyword">mut</span> treasury.balance, amount), ctx)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 查询金库余额</span></span><br><span class="line">    public fun <span class="title function_ invoke__">balanceOf</span>(treasury: &amp;Treasury): <span class="type">u64</span> &#123;</span><br><span class="line">        balance::<span class="title function_ invoke__">value</span>(&amp;treasury.balance)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-发布合约"><a href="#3-发布合约" class="headerlink" title="3. 发布合约"></a>3. 发布合约</h2><ul>
+<li>获得对象</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sui move   --skip-fetch-latest-git-deps  publish</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">╭────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span><br><span class="line">│ Object Changes                                                                                             │</span><br><span class="line">├────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</span><br><span class="line">│ Created Objects:                                                                                           │</span><br><span class="line">│  ┌──                                                                                                       │</span><br><span class="line">│  │ ObjectID: 0x10ca605ce0437c10274bcc260901ef5b34bab91c747f2dc498b722ae151a5baf                            │</span><br><span class="line">│  │ Sender: 0x6560a053cd8d98925b33ab2b951d656736d0133734def0b5d679402fc555576c                              │</span><br><span class="line">│  │ Owner: Account Address ( 0x6560a053cd8d98925b33ab2b951d656736d0133734def0b5d679402fc555576c )           │</span><br><span class="line">│  │ ObjectType: 0x38417a57a4f061487895b2c97b3e188e847c25de37762c5e0146bd6a32cd5a89::upgrade_demo::AdminCap  │</span><br><span class="line">│  │ Version: 245323791                                                                                      │</span><br><span class="line">│  │ Digest: BLp2DjwNMD1fZ4Y4HxNMRz1AQq28afgMQ57pNFt4BZoa                                                    │</span><br><span class="line">│  └──  </span><br><span class="line"></span><br><span class="line">│  ┌──                                                                                                       │</span><br><span class="line">│  │ ObjectID: 0x67a5815e053ab8be8248c894ec288baf79bc6f323321812074cac70e63915bb0                            │</span><br><span class="line">│  │ Sender: 0x6560a053cd8d98925b33ab2b951d656736d0133734def0b5d679402fc555576c                              │</span><br><span class="line">│  │ Owner: Account Address ( 0x6560a053cd8d98925b33ab2b951d656736d0133734def0b5d679402fc555576c )           │</span><br><span class="line">│  │ ObjectType: 0x2::package::UpgradeCap                                                                    │</span><br><span class="line">│  │ Version: 245323791                                                                                      │</span><br><span class="line">│  │ Di</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> ┌──                                                                                                       │</span><br><span class="line">│  │ ObjectID: 0x830243c107ff3ad19e4506d9a61d04af4a0c35771445e468c3a7befbc6d9293c                            │</span><br><span class="line">│  │ Sender: 0x6560a053cd8d98925b33ab2b951d656736d0133734def0b5d679402fc555576c                              │</span><br><span class="line">│  │ Owner: Shared( 245323791 )                                                                              │</span><br><span class="line">│  │ ObjectType: 0x38417a57a4f061487895b2c97b3e188e847c25de37762c5e0146bd6a32cd5a89::upgrade_demo::Treasury  │</span><br><span class="line">│  │ Version: 245323791                                                                                      │</span><br><span class="line">│  │ Digest: Enq9zenKrY4r3fXYEWr9XJCcA8FixSTZhKbVqXqDueNM </span><br></pre></td></tr></table></figure>
+<ul>
+<li>对象说明</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>对象名</th>
+<th>取值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>package address</td>
+<td>0x38417a57a4f061487895b2c97b3e188e847c25de37762c5e0146bd6a32cd5a89</td>
+<td>合约包的地址</td>
+</tr>
+<tr>
+<td>upgradeCap</td>
+<td>0x67a5815e053ab8be8248c894ec288baf79bc6f323321812074cac70e63915bb0</td>
+<td>控制升级的权限</td>
+</tr>
+<tr>
+<td>adminCap</td>
+<td>0x10ca605ce0437c10274bcc260901ef5b34bab91c747f2dc498b722ae151a5baf</td>
+<td>控制提取Treasury余额</td>
+</tr>
+<tr>
+<td>owner</td>
+<td>0x6560a053cd8d98925b33ab2b951d656736d0133734def0b5d679402fc555576c</td>
+<td>目前合约发布者拥有adminCap,upgradeCap</td>
+</tr>
+<tr>
+<td>treasury</td>
+<td>0x830243c107ff3ad19e4506d9a61d04af4a0c35771445e468c3a7befbc6d9293c</td>
+<td>存钱罐</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>查看当前用户的coin</p>
+<figure class="highlight bash"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sui client gas</span><br><span class="line">╭────────────────────────────────────────────────────────────────────┬────────────────────┬──────────────────╮</span><br><span class="line">│ gasCoinId                                                          │ mistBalance (MIST) │ suiBalance (SUI) │</span><br><span class="line">├────────────────────────────────────────────────────────────────────┼────────────────────┼──────────────────┤</span><br><span class="line">│ 0x09119914c43f80a486b30cc5d4f1382d0b57929eabd70f116ae4e918d9c89bf0 │ 470927364          │ 0.47             │</span><br><span class="line">│ 0xae3da3cb598610db16ea040ad6b09cfd324e146a2a7e5b18ccfa76b34b8d3b22 │ 497664604          │ 0.49             │</span><br><span class="line">│ 0xeda78a0ba9b2ef153a209f51380d8e77af0f35c60eb8ea26d4239c639844680d │ 995399888          │ 0.99             │</span><br><span class="line">╰────────────────────────────────────────────────────────────────────┴────────────────────┴──────────────────╯</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="4-A用户存钱"><a href="#4-A用户存钱" class="headerlink" title="4. A用户存钱"></a>4. A用户存钱</h2><ul>
+<li>配置一些变量，方便后面的脚本使用</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PKG=0x38417a57a4f061487895b2c97b3e188e847c25de37762c5e0146bd6a32cd5a89</span><br><span class="line"><span class="built_in">export</span> ADMIN_CAP=0x10ca605ce0437c10274bcc260901ef5b34bab91c747f2dc498b722ae151a5baf</span><br><span class="line"><span class="built_in">export</span> UPGRADE_CAP=0x67a5815e053ab8be8248c894ec288baf79bc6f323321812074cac70e63915bb0</span><br><span class="line"><span class="built_in">export</span> TREASURY=0x830243c107ff3ad19e4506d9a61d04af4a0c35771445e468c3a7befbc6d9293c     </span><br><span class="line"><span class="built_in">export</span> ADDR_A=0x6560a053cd8d98925b33ab2b951d656736d0133734def0b5d679402fc555576c</span><br><span class="line"><span class="built_in">export</span> ADDR_B=0x7cbe5e6596e23266dd5763dd89b4ab1195516908ecde8febfe96685c7cbe6432</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看当前用户有哪些coin</span></span><br><span class="line">sui client switch --address <span class="variable">$ADDR_A</span></span><br><span class="line">sui client gas</span><br><span class="line">╭────────────────────────────────────────────────────────────────────┬────────────────────┬──────────────────╮</span><br><span class="line">│ gasCoinId                                                          │ mistBalance (MIST) │ suiBalance (SUI) │</span><br><span class="line">├────────────────────────────────────────────────────────────────────┼────────────────────┼──────────────────┤</span><br><span class="line">│ 0x09119914c43f80a486b30cc5d4f1382d0b57929eabd70f116ae4e918d9c89bf0 │ 470927364          │ 0.47             │</span><br><span class="line">│ 0xae3da3cb598610db16ea040ad6b09cfd324e146a2a7e5b18ccfa76b34b8d3b22 │ 497664604          │ 0.49             │</span><br><span class="line">│ 0xeda78a0ba9b2ef153a209f51380d8e77af0f35c60eb8ea26d4239c639844680d │ 995399888          │ 0.99             │</span><br><span class="line">╰────────────────────────────────────────────────────────────────────┴────────────────────┴──────────────────╯</span><br><span class="line"></span><br><span class="line"><span class="comment"># 根据前面的输出，设置需要存入的coin</span></span><br><span class="line"><span class="built_in">export</span> COIN_A=0xae3da3cb598610db16ea040ad6b09cfd324e146a2a7e5b18ccfa76b34b8d3b22</span><br><span class="line"><span class="comment"># 存入货币</span></span><br><span class="line">sui client ptb --move-call <span class="variable">$PKG</span>::upgrade_demo::deposit   <span class="string">&quot;@<span class="variable">$TREASURY</span>,@<span class="variable">$COIN_A</span>&quot;</span></span><br></pre></td></tr></table></figure>
+<h2 id="5-A-用户取钱"><a href="#5-A-用户取钱" class="headerlink" title="5. A 用户取钱"></a>5. A 用户取钱</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sui client ptb --move-call <span class="variable">$PKG</span>::upgrade_demo::deposit   <span class="string">&quot;@<span class="variable">$TREASURY</span> @0xae3da3cb598610db16ea040ad6b09cfd324e146a2a7e5b18ccfa76b34b8d3b22&quot;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>取回5000单位</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">sui client ptb --move-call <span class="variable">$PKG</span>::upgrade_demo::withdraw <span class="string">&quot;@<span class="variable">$TREASURY</span> 50000 @<span class="variable">$ADMIN_CAP</span>&quot;</span></span><br><span class="line">sui client ptb --move-call <span class="variable">$PKG</span>::upgrade_demo::withdraw <span class="string">&quot;@<span class="variable">$TREASURY</span> 50000 @<span class="variable">$ADMIN_CAP</span>&quot;</span> --assign coin1 --transfer-objects [coin1] @<span class="variable">$ADDR_A</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看当前A用户拥有的coin</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sui client gas $ADDR_A</span><br><span class="line">╭────────────────────────────────────────────────────────────────────┬────────────────────┬──────────────────╮</span><br><span class="line">│ gasCoinId                                                          │ mistBalance (MIST) │ suiBalance (SUI) │</span><br><span class="line">├────────────────────────────────────────────────────────────────────┼────────────────────┼──────────────────┤</span><br><span class="line">│ 0x09119914c43f80a486b30cc5d4f1382d0b57929eabd70f116ae4e918d9c89bf0 │ 466808880          │ 0.46             │</span><br><span class="line">│ 0xd91123cfc325ba1eff95e839837a1bf443046cc00a72da5192a005ffea1a7117 │ 50000              │ 0.00             │</span><br><span class="line">│ 0xeda78a0ba9b2ef153a209f51380d8e77af0f35c60eb8ea26d4239c639844680d │ 995399888          │ 0.99             │</span><br><span class="line">╰────────────────────────────────────────────────────────────────────┴────────────────────┴──────────────────╯</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="6-A-用户转移adminCap-给B"><a href="#6-A-用户转移adminCap-给B" class="headerlink" title="6. A 用户转移adminCap 给B"></a>6. A 用户转移adminCap 给B</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">sui client ptb --transfer-objects [@<span class="variable">$ADMIN_CAP</span>] @<span class="variable">$ADDR_B</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示ADMIN_CAP 对象的owner是0x7cbe5e6596e23266dd5763dd89b4ab1195516908ecde8febfe96685c7cbe6432</span></span><br><span class="line"></span><br><span class="line">│  ┌──                                                                                                       │</span><br><span class="line">│  │ ObjectID: 0x10ca605ce0437c10274bcc260901ef5b34bab91c747f2dc498b722ae151a5baf                            │</span><br><span class="line">│  │ Sender: 0x6560a053cd8d98925b33ab2b951d656736d0133734def0b5d679402fc555576c                              │</span><br><span class="line">│  │ Owner: Account Address ( 0x7cbe5e6596e23266dd5763dd89b4ab1195516908ecde8febfe96685c7cbe6432 )           │</span><br><span class="line">│  │ ObjectType: 0x38417a57a4f061487895b2c97b3e188e847c25de37762c5e0146bd6a32cd5a89::upgrade_demo::AdminCap  │</span><br><span class="line">│  │ Version: 245323796                                                                                      │</span><br><span class="line">│  │ Digest: 6QpfZqgrTFjTcaySHPrfS5cDE1K1L5xvuWDQRxh1vumS                                                    │</span><br><span class="line">│  └── </span><br></pre></td></tr></table></figure>
+
+<h2 id="7-A用户-再次取款，预期会失败"><a href="#7-A用户-再次取款，预期会失败" class="headerlink" title="7. A用户 再次取款，预期会失败"></a>7. A用户 再次取款，预期会失败</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sui client ptb --move-call <span class="variable">$PKG</span>::upgrade_demo::withdraw <span class="string">&quot;@<span class="variable">$TREASURY</span> 50000 @<span class="variable">$ADMIN_CAP</span>&quot;</span> --assign coin1 --transfer-objects [coin1] @<span class="variable">$ADDR_A</span> --gas-budget 30000000</span><br><span class="line">RPC call failed: ErrorObject &#123; code: ServerError(-32002), message: <span class="string">&quot;Transaction validator signing failed due to issues with transaction inputs, please review the errors and try again:\n- Transaction was not signed by the correct sender: Object 0x10ca605ce0437c10274bcc260901ef5b34bab91c747f2dc498b722ae151a5baf is owned by account address 0x7cbe5e6596e23266dd5763dd89b4ab1195516908ecde8febfe96685c7cbe6432, but given owner/signer address is 0x6560a053cd8d98925b33ab2b951d656736d0133734def0b5d679402fc555576c\n- Could not find the referenced object 0x38417a57a4f061487895b2c97b3e188e847c25de37762c5e0146bd6a32cd5a89 at version None&quot;</span>, data: None &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="8-切换B-用户，取款成功"><a href="#8-切换B-用户，取款成功" class="headerlink" title="8. 切换B 用户，取款成功"></a>8. 切换B 用户，取款成功</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 切换到ADDR_B</span></span><br><span class="line">$ sui client switch --address <span class="variable">$ADDR_B</span></span><br><span class="line">Active address switched to 0x7cbe5e6596e23266dd5763dd89b4ab1195516908ecde8febfe96685c7cbe6432</span><br><span class="line"><span class="comment"># 调用withdraw取款</span></span><br><span class="line">$ sui client ptb --move-call <span class="variable">$PKG</span>::upgrade_demo::withdraw <span class="string">&quot;@<span class="variable">$TREASURY</span> 50000 @<span class="variable">$ADMIN_CAP</span>&quot;</span> --assign coin1 --transfer-objects [coin1] @<span class="variable">$ADDR_B</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看获得50000 mist的coin</span></span><br><span class="line">$ sui client gas</span><br><span class="line">╭────────────────────────────────────────────────────────────────────┬────────────────────┬──────────────────╮</span><br><span class="line">│ gasCoinId                                                          │ mistBalance (MIST) │ suiBalance (SUI) │</span><br><span class="line">├────────────────────────────────────────────────────────────────────┼────────────────────┼──────────────────┤</span><br><span class="line">│ 0x015a3cb7a04cdcd7631e4056f56e8a55b77a1a7d05dc7da6f30e9ac705d19b7c │ 50000              │ 0.00             │</span><br><span class="line">│ 0x418760c10d6fe9ecaa2594803848412c834f58983f1be03b26962a22dd84f9e5 │ 995949216          │ 0.99             │</span><br><span class="line">╰────────────────────────────────────────────────────────────────────┴────────────────────┴──────────────────╯</span><br></pre></td></tr></table></figure>
+
+<h2 id="9-A-用户发起攻击，升级合约包，-新建AdminCap对象adminCap2"><a href="#9-A-用户发起攻击，升级合约包，-新建AdminCap对象adminCap2" class="headerlink" title="9. A 用户发起攻击，升级合约包， 新建AdminCap对象adminCap2"></a>9. A 用户发起攻击，升级合约包， 新建AdminCap对象adminCap2</h2><h3 id="9-1-修改合约代码，新构造AdminCap对象"><a href="#9-1-修改合约代码，新构造AdminCap对象" class="headerlink" title="9.1 修改合约代码，新构造AdminCap对象"></a>9.1 修改合约代码，新构造AdminCap对象</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> fun <span class="title">mintCap</span><span class="params">(ctx: &amp;mut TxContext)</span>: AdminCap &#123;</span></span><br><span class="line">    AdminCap&#123;id: object::<span class="keyword">new</span>(ctx)&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="9-2-升级合约"><a href="#9-2-升级合约" class="headerlink" title="9.2 升级合约"></a>9.2 升级合约</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 切换为A</span></span><br><span class="line">sui client switch --address <span class="variable">$ADDR_A</span></span><br><span class="line">Active address switched to 0x6560a053cd8d98925b33ab2b951d656736d0133734def0b5d679402fc555576c</span><br><span class="line"><span class="comment"># A 升级合约</span></span><br><span class="line">sui client upgrade  --upgrade-capability <span class="variable">$UPGRADE_CAP</span>  --gas-budget 100000000  --skip-fetch-latest-git-deps</span><br><span class="line"><span class="comment"># 升级对象变更，package版本增长 ,版本id 变成了 0xc163e33f376cae7a90b0c56b49af9a0aa387c210792d6c76aba0a12a22de8869</span></span><br><span class="line">老的版本<span class="built_in">id</span>是0x38417a57a4f061487895b2c97b3e188e847c25de37762c5e0146bd6a32cd5a89</span><br><span class="line">│  ┌──                                                                                             │</span><br><span class="line">│  │ ObjectID: 0x67a5815e053ab8be8248c894ec288baf79bc6f323321812074cac70e63915bb0                  │</span><br><span class="line">│  │ Sender: 0x6560a053cd8d98925b33ab2b951d656736d0133734def0b5d679402fc555576c                    │</span><br><span class="line">│  │ Owner: Account Address ( 0x6560a053cd8d98925b33ab2b951d656736d0133734def0b5d679402fc555576c ) │</span><br><span class="line">│  │ ObjectType: 0x2::package::UpgradeCap                                                          │</span><br><span class="line">│  │ Version: 245323797                                                                            │</span><br><span class="line">│  │ Digest: 64rX9ChLmX5mupim2UqRGUoKnHD3wTiiYg4uXxzjvppc                                          │</span><br><span class="line">│  └──                                                                                             │</span><br><span class="line">│ Published Objects:                                                                               │</span><br><span class="line">│  ┌──                                                                                             │</span><br><span class="line">│  │ PackageID: 0xc163e33f376cae7a90b0c56b49af9a0aa387c210792d6c76aba0a12a22de8869                 │</span><br><span class="line">│  │ Version: 2                                                                                    │</span><br><span class="line">│  │ Digest: 8aWACYMu9nLjAG3MHQGteXMsNiBUY5xCt6KhKmMEmrTX                                          │</span><br><span class="line">│  │ Modules: upgrade_demo                                                                         │</span><br><span class="line">│  └──                   </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>新发布的的包 id发生改变</p>
+<p>0x67a5815e053ab8be8248c894ec288baf79bc6f323321812074cac70e63915bb0</p>
+</li>
+</ul>
+<h2 id="9-3-发起攻击"><a href="#9-3-发起攻击" class="headerlink" title="9.3  发起攻击"></a>9.3  发起攻击</h2><p>用户用新创建的adminCap2 来取钱</p>
+<p>初始的package</p>
+<p><img src="/images/image-20241120130414556.png" alt="image-20241120130414556"></p>
+<ul>
+<li>1 pacakge object id</li>
+<li>2 版本</li>
+<li>3 代码中的包地址。</li>
+</ul>
+<p>升级后的packageid发生变更</p>
+<p><img src="/images/image-20241120125933911.png" alt="image-20241120125933911"></p>
+<ul>
+<li>1 package object id</li>
+<li>2 版本</li>
+<li>3 代码中的package地址</li>
+</ul>
+<p>但是从代码看，package地址 还是最初发布的地址，version&#x3D;2， 代码module后面的地址不变。 但是objectid发生变更（图1）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">$  <span class="built_in">export</span> PKG2=0xc163e33f376cae7a90b0c56b49af9a0aa387c210792d6c76aba0a12a22de8869</span><br><span class="line">$  sui client ptb --move-call <span class="variable">$PKG2</span>::upgrade_demo::mintCap --assign new_cap --transfer-objects [<span class="string">&quot;new_cap&quot;</span> ] @<span class="variable">$ADDR_A</span></span><br><span class="line"></span><br><span class="line"> Created Objects:                                                                                           │</span><br><span class="line">│  ┌──                                                                                                       │</span><br><span class="line">│  │ ObjectID: 0xb71d4b11e35d769bcdefa42f9706af118b76b2ab2896fe2a294639e19f52d816                            │</span><br><span class="line">│  │ Sender: 0x6560a053cd8d98925b33ab2b951d656736d0133734def0b5d679402fc555576c                              │</span><br><span class="line">│  │ Owner: Account Address ( 0x6560a053cd8d98925b33ab2b951d656736d0133734def0b5d679402fc555576c )           │</span><br><span class="line">│  │ ObjectType: 0x38417a57a4f061487895b2c97b3e188e847c25de37762c5e0146bd6a32cd5a89::upgrade_demo::AdminCap  │</span><br><span class="line">│  │ Version: 245323798                                                                                      │</span><br><span class="line">│  │ Digest: 8xio19V93oLgmF8jLxWKoCfgCpSitFJqYLLLTbN9Wc77                                                    │</span><br><span class="line">│  └──  </span><br><span class="line">$ <span class="built_in">export</span>  ADMIN_CAP2=0xb71d4b11e35d769bcdefa42f9706af118b76b2ab2896fe2a294639e19f52d816</span><br><span class="line">$ sui client ptb --move-call <span class="variable">$PKG2</span>::upgrade_demo::withdraw <span class="string">&quot;@<span class="variable">$TREASURY</span> 6000 @<span class="variable">$ADMIN_CAP2</span>&quot;</span> \</span><br><span class="line">--assign coin2 --transfer-objects [coin2] @<span class="variable">$ADDR_A</span></span><br><span class="line"><span class="comment"># 偷取成功，获得一个6000mist的coin</span></span><br><span class="line">$ sui client gas <span class="variable">$ADDR_A</span></span><br><span class="line">╭────────────────────────────────────────────────────────────────────┬────────────────────┬──────────────────╮</span><br><span class="line">│ gasCoinId                                                          │ mistBalance (MIST) │ suiBalance (SUI) │</span><br><span class="line">├────────────────────────────────────────────────────────────────────┼────────────────────┼──────────────────┤</span><br><span class="line">│ 0x09119914c43f80a486b30cc5d4f1382d0b57929eabd70f116ae4e918d9c89bf0 │ 450920664          │ 0.45             │</span><br><span class="line">│ 0x33233ad9e71a8ef079b7c1c58ac9c99a263d04620f585d37e1ae94b4bd64d538 │ 6000               │ 0.00             │</span><br><span class="line">│ 0x64502383e84a24dda2e531ec0cac4d8123c9c4d7820451a1b42a02eae1888bea │ 50000              │ 0.00             │</span><br><span class="line">│ 0xd91123cfc325ba1eff95e839837a1bf443046cc00a72da5192a005ffea1a7117 │ 50000              │ 0.00             │</span><br><span class="line">│ 0xeda78a0ba9b2ef153a209f51380d8e77af0f35c60eb8ea26d4239c639844680d │ 995399888          │ 0.99             │</span><br><span class="line">╰────────────────────────────────────────────────────────────────────┴────────────────────┴──────────────────╯</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PKG=0x38417a57a4f061487895b2c97b3e188e847c25de37762c5e0146bd6a32cd5a89</span><br><span class="line"><span class="built_in">export</span> UPGRADE_CAP=0x67a5815e053ab8be8248c894ec288baf79bc6f323321812074cac70e63915嗯嗯</span><br><span class="line"></span><br><span class="line">$ sui client upgrade  --upgrade-capability <span class="variable">$UPGRADE_CAP</span> --package-id <span class="variable">$PKG</span> --gas-budget 100000000</span><br></pre></td></tr></table></figure>
+
+<h2 id="对策："><a href="#对策：" class="headerlink" title="对策："></a>对策：</h2><h3 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h3><ul>
+<li>转移权限时，将UpgradeCap也转移</li>
+</ul>
+<h3 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h3><ul>
+<li><p>在 Treasury 中添加adminCap的id。</p>
+</li>
+<li><p>在取款的时候做校验</p>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="comment">// 金库结构</span></span><br><span class="line"> <span class="keyword">public</span> <span class="keyword">struct</span> <span class="title class_">Treasury</span> has key &#123;</span><br><span class="line">     id: UID,</span><br><span class="line">     balance: Balance&lt;SUI&gt;,</span><br><span class="line"> +   admin_id : ID,</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">// 初始化函数 - 创建管理员凭证和金库</span></span><br><span class="line"> <span class="function">fun <span class="title">init</span><span class="params">(ctx: &amp;mut TxContext)</span> </span>&#123;</span><br><span class="line">     let admin_cap = AdminCap &#123;</span><br><span class="line">         id: object::<span class="built_in">new</span>(ctx)</span><br><span class="line">     &#125;;</span><br><span class="line">     </span><br><span class="line">     let treasury = Treasury &#123;</span><br><span class="line">         id: object::<span class="built_in">new</span>(ctx),</span><br><span class="line">         balance: balance::<span class="built_in">zero</span>(),</span><br><span class="line">+        admin_id: *admin_cap.id.<span class="built_in">as_inner</span>(),</span><br><span class="line">     &#125;</span><br><span class="line">     ...</span><br><span class="line">         </span><br><span class="line">         </span><br><span class="line">              <span class="comment">// 管理员提取SUI代币</span></span><br><span class="line"> <span class="keyword">public</span> fun <span class="built_in">withdraw</span>(</span><br><span class="line">     treasury: &amp;mut Treasury, </span><br><span class="line">     amount: u64,</span><br><span class="line">     admin_cap: &amp;AdminCap,</span><br><span class="line">     ctx: &amp;mut TxContext</span><br><span class="line"> ): Coin&lt;SUI&gt; &#123;</span><br><span class="line">+     assert!(admin_cap.id.<span class="built_in">as_inner</span>() == treasury.admin_id, ENotAdmin);</span><br><span class="line">   ...</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.walrus.mov/2024/11/11/sui/sui-cap-transfer/" data-id="cm3pg1bfv0002zno33wp74z5s" data-title="2024 -11-20  sui 存钱罐的权限控制和pacakge升级带来的风险" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/move/" rel="tag">move</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/package-upgrade/" rel="tag">package upgrade</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sui/" rel="tag">sui</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-sui/sui-coin-concepts" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2024/11/10/sui/sui-coin-concepts/" class="article-date">
@@ -1143,7 +1404,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ability/" rel="tag">ability</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dns/" rel="tag">dns</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-page/" rel="tag">github page</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/move/" rel="tag">move</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sui/" rel="tag">sui</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ability/" rel="tag">ability</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dns/" rel="tag">dns</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-page/" rel="tag">github page</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/move/" rel="tag">move</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/package-upgrade/" rel="tag">package upgrade</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sui/" rel="tag">sui</a></li></ul>
     </div>
   </div>
 
@@ -1153,7 +1414,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/ability/" style="font-size: 15px;">ability</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/dns/" style="font-size: 10px;">dns</a> <a href="/tags/github-page/" style="font-size: 10px;">github page</a> <a href="/tags/move/" style="font-size: 20px;">move</a> <a href="/tags/sui/" style="font-size: 20px;">sui</a>
+      <a href="/tags/ability/" style="font-size: 15px;">ability</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/dns/" style="font-size: 10px;">dns</a> <a href="/tags/github-page/" style="font-size: 10px;">github page</a> <a href="/tags/move/" style="font-size: 20px;">move</a> <a href="/tags/package-upgrade/" style="font-size: 10px;">package upgrade</a> <a href="/tags/sui/" style="font-size: 20px;">sui</a>
     </div>
   </div>
 
@@ -1175,6 +1436,14 @@
       <ul>
         
           <li>
+            <a href="/2024/11/20/sui/sui%20move-attach/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/19/walrus/walrus-first/">(no title)</a>
+          </li>
+        
+          <li>
             <a href="/2024/11/19/hexo-install-tips/">使用hexo搭建个人主页</a>
           </li>
         
@@ -1184,14 +1453,6 @@
         
           <li>
             <a href="/2024/11/11/sui/sui-colearn-qa1/">2024 -11-11  第一周Sui Move训练营课程答疑问题</a>
-          </li>
-        
-          <li>
-            <a href="/2024/11/10/sui/sui-coin-concepts/">sui coin 的一些概念 设计思想和练习</a>
-          </li>
-        
-          <li>
-            <a href="/2024/11/10/sui/sui-move-ability/">Move 对象的有4种能力(abliity) 设计考虑</a>
           </li>
         
       </ul>
