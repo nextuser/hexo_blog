@@ -13,34 +13,34 @@
 <meta property="og:site_name" content="nextuser&#39;s blog">
 <meta property="og:description" content="Move 对象的有4种能力(abliity)1. 对象的几种存储状态: 新建的对象， 进入未曾存储状态，一个交易结束之后，对象要么被销毁，要么被存储到网络的链上存储。  链上存储的对象，也可以借用引用参与交易运算  运行态的对象，可以通过share或freeze 编程共享对象。freeze的对象是只读的。  链上存储对象，可以通过函数调用作为输入参数，移动成运行态，进入运行态之后，又可以重新进入析">
 <meta property="og:locale">
-<meta property="og:image" content="http://www.walrus.mov/images/image-20241114154521620.png">
-<meta property="og:image" content="http://www.walrus.mov/images/image-20241111194804064.png">
-<meta property="og:image" content="http://www.walrus.mov/images/image-20241114085958845.png">
-<meta property="og:image" content="http://www.walrus.mov/images/image-20241114091033160.png">
-<meta property="og:image" content="http://www.walrus.mov/images/image-20241114095326972.png">
-<meta property="og:image" content="http://www.walrus.mov/images/image-20241114080921239.png">
-<meta property="og:image" content="http://www.walrus.mov/images/image-20241111213310276.png">
+<meta property="og:image" content="http://www.walrus.mov/2024/11/10/sui/sui-move-ability/images/image-20241114154521620.png">
+<meta property="og:image" content="http://www.walrus.mov/2024/11/10/sui/sui-move-ability/images/image-20241111194804064.png">
+<meta property="og:image" content="http://www.walrus.mov/2024/11/10/sui/sui-move-ability/images/image-20241114085958845.png">
+<meta property="og:image" content="http://www.walrus.mov/2024/11/10/sui/sui-move-ability/images/image-20241114091033160.png">
+<meta property="og:image" content="http://www.walrus.mov/2024/11/10/sui/sui-move-ability/images/image-20241114095326972.png">
+<meta property="og:image" content="http://www.walrus.mov/2024/11/10/sui/sui-move-ability/images/image-20241114080921239.png">
+<meta property="og:image" content="http://www.walrus.mov/2024/11/10/sui/sui-move-ability/images/image-20241111213310276.png">
 <meta property="article:published_time" content="2024-11-09T16:08:11.000Z">
-<meta property="article:modified_time" content="2024-11-18T17:07:30.578Z">
+<meta property="article:modified_time" content="2024-11-20T08:14:35.278Z">
 <meta property="article:author" content="nextuser">
 <meta property="article:tag" content="sui">
 <meta property="article:tag" content="move">
 <meta property="article:tag" content="ability">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://www.walrus.mov/images/image-20241114154521620.png">
+<meta name="twitter:image" content="http://www.walrus.mov/2024/11/10/sui/sui-move-ability/images/image-20241114154521620.png">
   
-    <link rel="alternate" href="/atom.xml" title="nextuser's blog" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="alternate" href="../../../../../atom.xml" title="nextuser's blog" type="application/atom+xml">
   
   
+    <link rel="shortcut icon" href="../../../../../favicon.png">
   
-<link rel="stylesheet" href="/css/style.css">
+  
+  
+<link rel="stylesheet" href="../../../../../css/style.css">
 
   
     
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+<link rel="stylesheet" href="../../../../../fancybox/jquery.fancybox.min.css">
 
   
   
@@ -54,11 +54,11 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">nextuser&#39;s blog</a>
+        <a href="../../../../../index.html" id="logo">nextuser&#39;s blog</a>
       </h1>
       
         <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">科学减肥</a>
+          <a href="../../../../../index.html" id="subtitle">科学减肥</a>
         </h2>
       
     </div>
@@ -66,20 +66,20 @@
       <nav id="main-nav">
         <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
         
-          <a class="main-nav-link" href="/">Home</a>
+          <a class="main-nav-link" href="../../../../../index.html">Home</a>
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+          <a class="main-nav-link" href="../../../../../archives">Archives</a>
         
       </nav>
       <nav id="sub-nav">
         
         
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+          <a class="nav-icon" href="../../../../../atom.xml" title="RSS"><span class="fa fa-rss"></span></a>
         
-        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+        <a class="nav-icon nav-search-btn" title="Buscar"><span class="fa fa-search"></span></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.walrus.mov"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Buscar"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.walrus.mov"></form>
       </div>
     </div>
   </div>
@@ -88,12 +88,12 @@
       <div class="outer">
         <section id="main"><article id="post-sui/sui-move-ability" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2024/11/10/sui/sui-move-ability/" class="article-date">
+    <a href="" class="article-date">
   <time class="dt-published" datetime="2024-11-09T16:08:11.000Z" itemprop="datePublished">2024-11-10</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/sui/">sui</a>
+    <a class="article-category-link" href="../../../../../categories/sui/">sui</a>
   </div>
 
   </div>
@@ -122,7 +122,7 @@
 <li><p>链上存储对象，可以通过函数调用作为输入参数，移动成运行态，进入运行态之后，又可以重新进入析构或重新存到链上。</p>
 </li>
 </ul>
-<p><img src="/images/image-20241114154521620.png" alt="image-20241114154521620"></p>
+<p><img src="images/image-20241114154521620.png" alt="image-20241114154521620"></p>
 <h2 id="2-对象具有的四种ability-能力"><a href="#2-对象具有的四种ability-能力" class="headerlink" title="2.  对象具有的四种ability (能力)"></a>2.  对象具有的四种ability (能力)</h2><p>这四种能力是：</p>
 <ul>
 <li><p><code>copy</code></p>
@@ -152,7 +152,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="2-1-如果有copy能力-赋值就是拷贝成一个新对象"><a href="#2-1-如果有copy能力-赋值就是拷贝成一个新对象" class="headerlink" title="2.1 如果有copy能力,赋值就是拷贝成一个新对象"></a>2.1 如果有copy能力,赋值就是拷贝成一个新对象</h3><p><img src="/images/image-20241111194804064.png" alt="image-20241111194804064"></p>
+<h3 id="2-1-如果有copy能力-赋值就是拷贝成一个新对象"><a href="#2-1-如果有copy能力-赋值就是拷贝成一个新对象" class="headerlink" title="2.1 如果有copy能力,赋值就是拷贝成一个新对象"></a>2.1 如果有copy能力,赋值就是拷贝成一个新对象</h3><p><img src="images/image-20241111194804064.png" alt="image-20241111194804064"></p>
 <ul>
 <li><p>上图中27行,c对象被拷贝到d,c和d指向的不是同一个对象, </p>
 </li>
@@ -183,11 +183,11 @@
 <li>第10 行,显示代码析构这个NoDrop对象</li>
 </ul>
 <h3 id="2-3-5-独立存储在链上"><a href="#2-3-5-独立存储在链上" class="headerlink" title="2.3.5  独立存储在链上"></a>2.3.5  独立存储在链上</h3><p>对象独立存储在链上,必须具有key能力 <code>has key</code></p>
-<p><img src="/images/image-20241114085958845.png" alt="image-20241114085958845"></p>
+<p><img src="images/image-20241114085958845.png" alt="image-20241114085958845"></p>
 <figure class="highlight ts"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> struct <span class="title class_">Keyable</span> has key&#123;</span><br><span class="line">    id : <span class="variable constant_">UID</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#[test]</span><br><span class="line">fun <span class="title function_">test_key</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">let</span> mut ctx = tx_context ::<span class="title function_">dummy</span>();</span><br><span class="line">    <span class="keyword">let</span> k = <span class="title class_">Keyable</span>&#123; <span class="attr">id</span>: <span class="attr">object</span>::<span class="title function_">new</span>(&amp;mut ctx)&#125;;</span><br><span class="line">    <span class="attr">std</span>::<span class="attr">debug</span>::<span class="title function_">print</span>(&amp;k);</span><br><span class="line">    <span class="attr">transfer</span>::<span class="title function_">transfer</span>(k,ctx.<span class="title function_">sender</span>());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>这个例子中Keyable是具有key能力的,可以通过transfer传递到sui网络上存储, 指定owner地址.</p>
-<h3 id="2-3-6-对象作为-共享对象存储在链上-需要具有key能力"><a href="#2-3-6-对象作为-共享对象存储在链上-需要具有key能力" class="headerlink" title="2.3.6   对象作为 共享对象存储在链上,需要具有key能力"></a>2.3.6   对象作为 共享对象存储在链上,需要具有key能力</h3><p><img src="/images/image-20241114091033160.png" alt="image-20241114091033160"></p>
+<h3 id="2-3-6-对象作为-共享对象存储在链上-需要具有key能力"><a href="#2-3-6-对象作为-共享对象存储在链上-需要具有key能力" class="headerlink" title="2.3.6   对象作为 共享对象存储在链上,需要具有key能力"></a>2.3.6   对象作为 共享对象存储在链上,需要具有key能力</h3><p><img src="images/image-20241114091033160.png" alt="image-20241114091033160"></p>
 <h5 id><a href="#" class="headerlink" title></a></h5><h3 id="2-3-7-对象作为一个对象的一部分存储-需要具有store能力"><a href="#2-3-7-对象作为一个对象的一部分存储-需要具有store能力" class="headerlink" title="2.3.7 对象作为一个对象的一部分存储,需要具有store能力"></a>2.3.7 对象作为一个对象的一部分存储,需要具有store能力</h3><figure class="highlight ts"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">use <span class="attr">std</span>::<span class="attr">string</span>::<span class="title class_">String</span>;</span><br><span class="line"><span class="keyword">public</span> struct <span class="title class_">Grandson</span> has store&#123;</span><br><span class="line">    name : <span class="title class_">String</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> struct <span class="title class_">Child</span> has store&#123;</span><br><span class="line">    name : <span class="title class_">String</span>,</span><br><span class="line">    child : <span class="title class_">Grandson</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> struct <span class="title class_">Parent</span> has key&#123;</span><br><span class="line">    <span class="attr">id</span>: <span class="variable constant_">UID</span>,</span><br><span class="line">    <span class="attr">child</span>: <span class="title class_">Child</span>,</span><br><span class="line">&#125;</span><br><span class="line">#[test]</span><br><span class="line">fun  <span class="title function_">test_store_child</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">let</span> mut ctx = <span class="attr">tx_context</span>::<span class="title function_">dummy</span>();</span><br><span class="line">    <span class="keyword">let</span> foo = <span class="title class_">Parent</span> &#123;</span><br><span class="line">        id : <span class="attr">object</span>::<span class="title function_">new</span>(&amp;mut ctx),</span><br><span class="line">        <span class="attr">child</span>: <span class="title class_">Child</span> &#123;</span><br><span class="line">            name : b<span class="string">&quot;one child&quot;</span>.<span class="title function_">to_string</span>(),</span><br><span class="line">            <span class="attr">child</span>: <span class="title class_">Grandson</span>&#123;</span><br><span class="line">                name : b<span class="string">&quot;a grandson&quot;</span>.<span class="title function_">to_string</span>(),</span><br><span class="line"></span><br><span class="line">            &#125;,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="attr">std</span>::<span class="attr">debug</span>::<span class="title function_">print</span>(&amp;foo);</span><br><span class="line">    <span class="attr">transfer</span>::<span class="title function_">freeze_object</span>(foo);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
@@ -200,7 +200,7 @@
 <li><p>Child 和Grandson 都具有store能力</p>
 </li>
 </ul>
-<p><img src="/images/image-20241114095326972.png" alt="image-20241114095326972"></p>
+<p><img src="images/image-20241114095326972.png" alt="image-20241114095326972"></p>
 <h3 id="2-3-8-无ablity-对象就必须在module内提供方法去析构它"><a href="#2-3-8-无ablity-对象就必须在module内提供方法去析构它" class="headerlink" title="2.3.8 无ablity 对象就必须在module内提供方法去析构它"></a>2.3.8 无ablity 对象就必须在module内提供方法去析构它</h3><ul>
 <li><p>一个对象,没有任何ability ,就是hot potato</p>
 </li>
@@ -213,8 +213,8 @@
 <li><p>下图中模块A, 需要使用模块B中的Foo 对象,使用完毕需要调用模块B 的析构方法</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> struct <span class="title class_">Foo</span> &#123;</span><br><span class="line">    value :u32</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
 </ul>
-<h4 id="2-3-8-1-根据对象不能外部析构的特性-构造借贷模型"><a href="#2-3-8-1-根据对象不能外部析构的特性-构造借贷模型" class="headerlink" title="2.3.8.1 根据对象不能外部析构的特性,构造借贷模型"></a>2.3.8.1 根据对象不能外部析构的特性,构造借贷模型</h4><p><img src="/images/image-20241114080921239.png" alt="image-20241114080921239"></p>
-<h4 id="2-3-8-2-闪电贷的逻辑"><a href="#2-3-8-2-闪电贷的逻辑" class="headerlink" title="2.3.8.2 闪电贷的逻辑"></a>2.3.8.2 闪电贷的逻辑</h4><p><img src="/images/image-20241111213310276.png" alt="image-20241111213310276"></p>
+<h4 id="2-3-8-1-根据对象不能外部析构的特性-构造借贷模型"><a href="#2-3-8-1-根据对象不能外部析构的特性-构造借贷模型" class="headerlink" title="2.3.8.1 根据对象不能外部析构的特性,构造借贷模型"></a>2.3.8.1 根据对象不能外部析构的特性,构造借贷模型</h4><p><img src="images/image-20241114080921239.png" alt="image-20241114080921239"></p>
+<h4 id="2-3-8-2-闪电贷的逻辑"><a href="#2-3-8-2-闪电贷的逻辑" class="headerlink" title="2.3.8.2 闪电贷的逻辑"></a>2.3.8.2 闪电贷的逻辑</h4><p><img src="images/image-20241111213310276.png" alt="image-20241111213310276"></p>
 <ul>
 <li>定义闪电贷的出借方,在borrow的时候获得Coin和 Loan对象,  </li>
 <li>在repay的时候才能销毁Loan对象, 如果借出放不调用repay,无法销毁Loan对象,交易会回滚.</li>
@@ -230,17 +230,20 @@
 
 
 
-
-
+<h1 id="附录"><a href="#附录" class="headerlink" title="附录:"></a>附录:</h1><p>最近在参加HOH 共学活动,</p>
+<p>💧 <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/d0brr-ao6cZ5t8Z5OO1Mog">HOH水分子公众号</a></p>
+<p>🌊 <a target="_blank" rel="noopener" href="https://x.com/0xHOH">HOH水分子X账号</a></p>
+<p>📹 <a target="_blank" rel="noopener" href="https://space.bilibili.com/3493269495352098">课程B站账号</a></p>
+<p>💻 Github仓库 <a target="_blank" rel="noopener" href="https://github.com/move-cn/letsmove">https://github.com/move-cn/letsmove</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.walrus.mov/2024/11/10/sui/sui-move-ability/" data-id="cm3n9nnv10001rzo3cy8e3oes" data-title="Move 对象的有4种能力(abliity) 设计考虑" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="http://www.walrus.mov/2024/11/10/sui/sui-move-ability/" data-id="cm3n9nnv10001rzo3cy8e3oes" data-title="Move 对象的有4种能力(abliity) 设计考虑" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ability/" rel="tag">ability</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/move/" rel="tag">move</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sui/" rel="tag">sui</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../../tags/ability/" rel="tag">ability</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../../tags/move/" rel="tag">move</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../../tags/sui/" rel="tag">sui</a></li></ul>
 
     </footer>
   </div>
@@ -248,8 +251,8 @@
     
 <nav id="article-nav">
   
-    <a href="/2024/11/10/sui/sui-coin-concepts/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Neuer</strong>
+    <a href="../sui-coin-concepts/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Nuevo</strong>
       <div class="article-nav-title">
         
           sui coin 的一些概念 设计思想和练习
@@ -270,9 +273,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Kategorien</h3>
+    <h3 class="widget-title">Categorías</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/dns/">dns</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/sui/">sui</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/hexo/">hexo</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/hexo/dns/">dns</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/sui/">sui</a></li></ul>
     </div>
   </div>
 
@@ -282,7 +285,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ability/" rel="tag">ability</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dns/" rel="tag">dns</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-page/" rel="tag">github page</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/move/" rel="tag">move</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/package-upgrade/" rel="tag">package upgrade</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sui/" rel="tag">sui</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../../../../tags/ability/" rel="tag">ability</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../../../../tags/blog/" rel="tag">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../../../../tags/dns/" rel="tag">dns</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../../../../tags/github-page/" rel="tag">github page</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../../../../tags/move/" rel="tag">move</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../../../../tags/package-upgrade/" rel="tag">package upgrade</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../../../../tags/sui/" rel="tag">sui</a></li></ul>
     </div>
   </div>
 
@@ -290,18 +293,18 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
+    <h3 class="widget-title">Nube de Tags</h3>
     <div class="widget tagcloud">
-      <a href="/tags/ability/" style="font-size: 15px;">ability</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/dns/" style="font-size: 10px;">dns</a> <a href="/tags/github-page/" style="font-size: 10px;">github page</a> <a href="/tags/move/" style="font-size: 20px;">move</a> <a href="/tags/package-upgrade/" style="font-size: 10px;">package upgrade</a> <a href="/tags/sui/" style="font-size: 20px;">sui</a>
+      <a href="../../../../../tags/ability/" style="font-size: 15px;">ability</a> <a href="../../../../../tags/blog/" style="font-size: 10px;">blog</a> <a href="../../../../../tags/dns/" style="font-size: 10px;">dns</a> <a href="../../../../../tags/github-page/" style="font-size: 10px;">github page</a> <a href="../../../../../tags/move/" style="font-size: 20px;">move</a> <a href="../../../../../tags/package-upgrade/" style="font-size: 10px;">package upgrade</a> <a href="../../../../../tags/sui/" style="font-size: 20px;">sui</a>
     </div>
   </div>
 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Archivos</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2024/11/">November 2024</a></li></ul>
     </div>
   </div>
 
@@ -309,28 +312,28 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">Posts recientes</h3>
     <div class="widget">
       <ul>
         
           <li>
-            <a href="/2024/11/20/sui/sui%20move-attach/">(no title)</a>
+            <a href="../../../23/sui/sui%20witness/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2024/11/19/walrus/walrus-first/">(no title)</a>
+            <a href="../../../19/walrus/walrus-first/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2024/11/19/hexo-install-tips/">使用hexo搭建个人主页</a>
+            <a href="../../../19/hexo-install-tips/">使用hexo搭建个人主页</a>
           </li>
         
           <li>
-            <a href="/2024/11/18/hello-world/">Hello World</a>
+            <a href="../../../18/hello-world/">Hello World</a>
           </li>
         
           <li>
-            <a href="/2024/11/11/sui/sui-colearn-qa1/">2024 -11-11  第一周Sui Move训练营课程答疑问题</a>
+            <a href="../../../11/sui/sui-colearn-qa1/">2024 -11-11  第一周Sui Move训练营课程答疑问题</a>
           </li>
         
       </ul>
@@ -347,7 +350,7 @@
     <div id="footer-info" class="inner">
       
       &copy; 2024 nextuser<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+      Construido por <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
@@ -355,25 +358,25 @@
     </div>
     <nav id="mobile-nav">
   
-    <a href="/" class="mobile-nav-link">Home</a>
+    <a href="../../../../../index.html" class="mobile-nav-link">Home</a>
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+    <a href="../../../../../archives" class="mobile-nav-link">Archives</a>
   
 </nav>
     
 
 
-<script src="/js/jquery-3.6.4.min.js"></script>
+<script src="../../../../../js/jquery-3.6.4.min.js"></script>
 
 
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
+<script src="../../../../../fancybox/jquery.fancybox.min.js"></script>
 
 
 
 
-<script src="/js/script.js"></script>
+<script src="../../../../../js/script.js"></script>
 
 
 
